@@ -1,6 +1,5 @@
-package com.kkapps.bubbles
+package com.kkapps.bubbles.app
 
-import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

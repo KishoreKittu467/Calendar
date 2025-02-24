@@ -1,0 +1,4 @@
+<resources>
+    <string name="platform_prefix">Compose: %1$s</string>
+    <string name="sample_text">This is a sample text</string>
+</resources>

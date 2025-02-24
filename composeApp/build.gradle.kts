@@ -9,6 +9,10 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -28,16 +32,13 @@ kotlin {
         }
         binaries.executable()
     }
-    
+
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
         }
     }
-    
-    jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -48,26 +49,78 @@ kotlin {
             isStatic = true
         }
     }
-    
+
+    jvm("desktop")
+
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    applyDefaultHierarchyTemplate {
+        // create a new group that
+        // depends on `common`
+        common {
+            // Define group name without
+            // `Main` as suffix
+            group("nonJs") {
+                // Provide which targets would
+                // be part of this group
+                withAndroidTarget()
+                withJvm()
+                group("ios") {
+                    withIos()
+                }
+            }
+        }
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas/")
+    }
+
     sourceSets {
         val desktopMain by getting
-        
+        val nonJsMain by getting {
+            kotlin.srcDir("build/generated/ksp/nonJsMain")
+            dependencies {
+                api(libs.androidx.room.runtime)
+                api(libs.androidx.room.runtime)
+                api(libs.sqlite.bundled)
+            }
+        }
         androidMain.dependencies {
             implementation(compose.preview)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.jetbrains.compose.navigation)
+            implementation(libs.kotlinx.serialization.json)
+
+            implementation(libs.bundles.coil)
+            implementation(libs.bundles.ktor.client)
+            implementation(libs.bundles.koin)
+
             implementation(projects.shared)
+            implementation(projects.common.ui)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.ktor.client.okhttp)
         }
+        nativeMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+        wasmJsMain.dependencies {
+            implementation(libs.ktor.client.js)
+        }
+    }
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
 
@@ -103,9 +156,11 @@ android {
     buildFeatures {
         compose = true
     }
-    dependencies {
-        debugImplementation(compose.uiTooling)
-    }
+}
+
+dependencies {
+    debugImplementation(compose.uiTooling)
+    "ksp"(libs.androidx.room.compiler)
 }
 
 compose.desktop {

@@ -1,9 +1,12 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.ComposeViewport
+import com.kkapps.bubbles.app.App
+import com.kkapps.bubbles.di.initKoin
 import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
+    initKoin()
     ComposeViewport(document.body!!) {
         App()
     }

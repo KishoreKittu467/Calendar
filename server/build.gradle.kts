@@ -6,6 +6,7 @@ plugins {
 
 group = "com.kkapps.bubbles"
 version = "1.0.0"
+
 application {
     mainClass.set("com.kkapps.bubbles.ApplicationKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=${extra["io.ktor.development"] ?: "false"}")
@@ -14,8 +15,6 @@ application {
 dependencies {
     implementation(projects.shared)
     implementation(libs.logback)
-    implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.netty)
-    testImplementation(libs.ktor.server.tests)
+    implementation(libs.bundles.ktor.server)
     testImplementation(libs.kotlin.test.junit)
 }
