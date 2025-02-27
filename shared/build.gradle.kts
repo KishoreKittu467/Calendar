@@ -34,8 +34,8 @@ kotlin {
     iosSimulatorArm64()
 
     // 2 jvm targets not working in KMP projects
-//    jvm()
-    jvm("desktop")
+//    jvm("desktop")
+    jvm()
 
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     applyDefaultHierarchyTemplate {

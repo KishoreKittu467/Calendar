@@ -1,9 +1,11 @@
 package com.kkapps.bubbles.di
 
 import org.koin.core.context.startKoin
+import org.koin.dsl.KoinAppDeclaration
 
-fun initKoin() {
+fun initKoin(config: KoinAppDeclaration? = null) {
     startKoin {
-        modules(platformModules, sharedModules)
+        config?.invoke(this)
+        modules(platformModules, domainModules, sharedModules)
     }
 }

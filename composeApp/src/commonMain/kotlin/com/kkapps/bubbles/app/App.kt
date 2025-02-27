@@ -1,48 +1,90 @@
 package com.kkapps.bubbles.app
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.Button
+import BookDetailScreenRoot
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
+import com.kkapps.bubbles.core.presentation.utils.sharedKoinViewModel
+import com.kkapps.bubbles.features.book.presentation.SelectedBookViewModel
+import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailAction
+import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailViewModel
+import com.kkapps.bubbles.features.book.presentation.book_list.BookListScreenRoot
+import com.kkapps.bubbles.features.book.presentation.book_list.BookListViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import bubbles.composeapp.generated.resources.Res
-import bubbles.composeapp.generated.resources.compose_multiplatform
-import bubbles.composeapp.generated.resources.platform_prefix
-import bubbles.composeapp.generated.resources.sample_text
-import com.kkapps.bubbles.features.book.presentation.BubblesViewModel
-import com.kkapps.common.ui.cards.GlassCard
-import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 @Preview
-fun App(
-    bubblesViewModel: BubblesViewModel = koinViewModel()
-) {
+fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(true) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { bubblesViewModel.platformName() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text( text = stringResource(Res.string.platform_prefix, greeting))
-                }
-            }
+        val navController = rememberNavController()
+        NavHost(
+            navController = navController,
+            startDestination = Route.BookGraph
+        ) {
+            navigation<Route.BookGraph>(
+                startDestination = Route.BookList
+            ) {
+                composable<Route.BookList>(
+                    exitTransition = { slideOutHorizontally() },
+                    popEnterTransition = { slideInHorizontally() }
+                ) {
+                    val viewModel = koinViewModel<BookListViewModel>()
+                    val selectedBookViewModel =
+                        it.sharedKoinViewModel<SelectedBookViewModel>(navController)
 
-            GlassCard {
-                Text(stringResource(Res.string.sample_text))
+                    LaunchedEffect(true) {
+                        selectedBookViewModel.onSelectBook(null)
+                    }
+
+                    BookListScreenRoot(
+                        viewModel = viewModel,
+                        onBookClick = { book ->
+                            selectedBookViewModel.onSelectBook(book)
+                            navController.navigate(
+                                Route.BookDetail(book.id)
+                            )
+                        }
+                    )
+                }
+                composable<Route.BookDetail>(
+                    enterTransition = {
+                        slideInHorizontally { initialOffset ->
+                            initialOffset
+                        }
+                    },
+                    exitTransition = {
+                        slideOutHorizontally { initialOffset ->
+                            initialOffset
+                        }
+                    }
+                ) {
+                    val selectedBookViewModel =
+                        it.sharedKoinViewModel<SelectedBookViewModel>(navController)
+                    val viewModel = koinViewModel<BookDetailViewModel>()
+                    val selectedBook by selectedBookViewModel.selectedBook.collectAsStateWithLifecycle()
+
+                    LaunchedEffect(selectedBook) {
+                        selectedBook?.let {
+                            viewModel.onAction(BookDetailAction.OnSelectedBookChange(it))
+                        }
+                    }
+
+                    BookDetailScreenRoot(
+                        viewModel = viewModel,
+                        onBackClick = {
+                            navController.navigateUp()
+                        }
+                    )
+                }
             }
         }
     }

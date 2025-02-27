@@ -1,3 +1,5 @@
+package com.kkapps.bubbles
+
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.window.ComposeViewport
 import com.kkapps.bubbles.app.App

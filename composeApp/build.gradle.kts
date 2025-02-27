@@ -76,11 +76,9 @@ kotlin {
     }
 
     sourceSets {
-        val desktopMain by getting
         val nonJsMain by getting {
             kotlin.srcDir("build/generated/ksp/nonJsMain")
             dependencies {
-                api(libs.androidx.room.runtime)
                 api(libs.androidx.room.runtime)
                 api(libs.sqlite.bundled)
             }
@@ -94,23 +92,32 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
             implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.kotlinx.serialization.json)
+            api(libs.koin.core)
 
             implementation(libs.bundles.coil)
             implementation(libs.bundles.ktor.client)
             implementation(libs.bundles.koin)
 
             implementation(projects.shared)
-            implementation(projects.common.ui)
+            implementation(projects.deps.ui)
         }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
-            implementation(libs.ktor.client.okhttp)
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
+                implementation(libs.ktor.client.okhttp)
+            }
         }
         nativeMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -160,12 +167,14 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    // ksp room compiler will not compile for wasmJs
+    // use target specific ksp: https://kotlinlang.org/docs/ksp-multiplatform.html
     "ksp"(libs.androidx.room.compiler)
 }
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.kkapps.bubbles.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
