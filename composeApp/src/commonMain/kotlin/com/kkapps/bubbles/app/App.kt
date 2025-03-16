@@ -66,9 +66,9 @@ fun App() {
                             initialOffset
                         }
                     }
-                ) {
+                ) { navBackStackEntry ->
                     val selectedBookViewModel =
-                        it.sharedKoinViewModel<SelectedBookViewModel>(navController)
+                        navBackStackEntry.sharedKoinViewModel<SelectedBookViewModel>(navController)
                     val viewModel = koinViewModel<BookDetailViewModel>()
                     val selectedBook by selectedBookViewModel.selectedBook.collectAsStateWithLifecycle()
 

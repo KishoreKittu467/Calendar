@@ -17,12 +17,17 @@ import org.koin.dsl.module
 expect val platformModules: Module
 
 expect val domainModules: Module
-
 val sharedModules: Module
     get () = module {
-        singleOf(::BubblesRepositoryImpl).bind<BubblesRepository>()
-        factory { Greeting() }
         single { HttpClientFactory.create(get()) }
+    }
+
+val featureModules: Module
+    get () = module {
+        singleOf(::BubblesRepositoryImpl).bind<BubblesRepository>()
+
+        factory { Greeting() }
+
         viewModelOf(::BubblesViewModel)
         viewModelOf(::BookListViewModel)
         viewModelOf(::BookDetailViewModel)

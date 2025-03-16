@@ -28,7 +28,11 @@ dependencyResolutionManagement {
     }
 }
 
+// Optimise: Include only projects that are necessary
 include(":composeApp")
 include(":shared")
 include(":server")
 include(":deps:ui")
+include(":deps:libs:calendar")
+include(":deps:libs:calendar:library")
+include(":demos:calendar")

@@ -1,0 +1,95 @@
+package com.kkapps.calendar.data
+
+import com.kkapps.calendar.core.CalendarDay
+import com.kkapps.calendar.core.CalendarMonth
+import com.kkapps.calendar.core.DayPosition
+import com.kkapps.calendar.core.OutDateStyle
+import com.kkapps.calendar.core.YearMonth
+import com.kkapps.calendar.core.atStartOfMonth
+import com.kkapps.calendar.core.daysUntil
+import com.kkapps.calendar.core.lengthOfMonth
+import com.kkapps.calendar.core.minusDays
+import com.kkapps.calendar.core.minusMonths
+import com.kkapps.calendar.core.monthsUntil
+import com.kkapps.calendar.core.plusDays
+import com.kkapps.calendar.core.plusMonths
+import com.kkapps.calendar.core.yearMonth
+import kotlinx.datetime.DayOfWeek
+
+internal data class MonthData(
+    private val month: YearMonth,
+    private val inDays: Int,
+    private val outDays: Int,
+) {
+    private val totalDays = inDays + month.lengthOfMonth() + outDays
+
+    private val firstDay = month.atStartOfMonth().minusDays(inDays)
+
+    private val rows = (0 until totalDays).chunked(7)
+
+    private val previousMonth = month.minusMonths(1)
+
+    private val nextMonth = month.plusMonths(1)
+
+    val calendarMonth = CalendarMonth(month, rows.map { week -> week.map { dayOffset -> getDay(dayOffset) } })
+
+    private fun getDay(dayOffset: Int): CalendarDay {
+        val date = firstDay.plusDays(dayOffset)
+        val position = when (date.yearMonth) {
+            month -> DayPosition.MonthDate
+            previousMonth -> DayPosition.InDate
+            nextMonth -> DayPosition.OutDate
+            else -> throw IllegalArgumentException("Invalid date: $date in month: $month")
+        }
+        return CalendarDay(date, position)
+    }
+}
+
+internal fun getCalendarMonthData(
+    startMonth: YearMonth,
+    offset: Int,
+    firstDayOfWeek: DayOfWeek,
+    outDateStyle: OutDateStyle,
+): MonthData {
+    val month = startMonth.plusMonths(offset)
+    val firstDay = month.atStartOfMonth()
+    val inDays = firstDayOfWeek.daysUntil(firstDay.dayOfWeek)
+    val outDays = (inDays + month.lengthOfMonth()).let { inAndMonthDays ->
+        val endOfRowDays = if (inAndMonthDays % 7 != 0) 7 - (inAndMonthDays % 7) else 0
+        val endOfGridDays = if (outDateStyle == OutDateStyle.EndOfRow) {
+            0
+        } else {
+            val weeksInMonth = (inAndMonthDays + endOfRowDays) / 7
+            (6 - weeksInMonth) * 7
+        }
+        return@let endOfRowDays + endOfGridDays
+    }
+    return MonthData(month, inDays, outDays)
+}
+
+internal fun getHeatMapCalendarMonthData(
+    startMonth: YearMonth,
+    offset: Int,
+    firstDayOfWeek: DayOfWeek,
+): MonthData {
+    val month = startMonth.plusMonths(offset)
+    val firstDay = month.atStartOfMonth()
+    val inDays = if (offset == 0) {
+        firstDayOfWeek.daysUntil(firstDay.dayOfWeek)
+    } else {
+        -firstDay.dayOfWeek.daysUntil(firstDayOfWeek)
+    }
+    val outDays = (inDays + month.lengthOfMonth()).let { inAndMonthDays ->
+        if (inAndMonthDays % 7 != 0) 7 - (inAndMonthDays % 7) else 0
+    }
+    return MonthData(month, inDays, outDays)
+}
+
+internal fun getMonthIndex(startMonth: YearMonth, targetMonth: YearMonth): Int {
+    return startMonth.monthsUntil(targetMonth)
+}
+
+internal fun getMonthIndicesCount(startMonth: YearMonth, endMonth: YearMonth): Int {
+    // Add one to include the start month itself!
+    return getMonthIndex(startMonth, endMonth) + 1
+}

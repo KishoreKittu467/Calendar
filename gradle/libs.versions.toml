@@ -1,8 +1,8 @@
 [versions]
-agp = "8.8.2"
-android-compileSdk = "35"
+agp = "8.9.0"
 android-minSdk = "24"
-android-targetSdk = "34"
+android-compileSdk = "35"
+android-targetSdk = "35"
 androidx-activityCompose = "1.10.1"
 #androidx-appcompat = "1.7.0"
 #androidx-constraintlayout = "2.2.0"
@@ -10,10 +10,11 @@ androidx-activityCompose = "1.10.1"
 #androidx-espresso-core = "3.6.1"
 #androidx-material = "1.12.0"
 #androidx-test-junit = "1.2.1"
-#junit = "4.13.2"
+junit5 = "5.11.4"
 #firebaseFirestore = "25.1.2"
 #kotlinxSerialization = "1.8.0"
 compose-plugin = "1.7.3"
+composeAndroid = "1.7.8"
 kotlin = "2.1.10"
 koin = "4.0.2"
 ktor = "3.0.3"
@@ -24,19 +25,20 @@ androidx-lifecycle = "2.8.4"
 coil3 = "3.1.0"
 navigationCompose = "2.8.0-alpha10"
 kotlinSerialization = "1.8.0"
-
+kotlinter = "4.4.1"
+dateTime = "0.6.1"
 ksp = "2.1.10-1.0.29"
+bvc = "0.16.3"
 
-# ios build is not working with versions sqlite = "2.5.0-alpha11" & room = "2.7.0-alpha11"
-# web build only working with versions sqlite = "2.5.0-alpha11" & room = "2.7.0-alpha11"
-#sqlite = "2.5.0-alpha11"
-#room = "2.7.0-alpha11"
-sqlite = "2.5.0-rc01"
-room = "2.7.0-rc01"
+sqlite = "2.5.0-rc02"
+room = "2.7.0-rc02"
 [libraries]
 
 # common
-#junit = { group = "junit", name = "junit", version.ref = "junit" }
+test-junit5-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+test-junit5-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
 #androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 #androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }
 #androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
@@ -45,14 +47,22 @@ room = "2.7.0-rc01"
 #androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 #kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
 #firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "composeAndroid" }
+
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 jetbrains-compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref= "navigationCompose"}
+
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinSerialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
+
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "dateTime" }
 
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+koin-core-coroutines = { group = "io.insert-koin", name = "koin-core-coroutines", version.ref = "koin" }
 
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
@@ -122,12 +132,14 @@ ktor-client = [
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 googleServices = { id = "com.google.gms.google-services", version.ref = "google-services" }
 native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+bcv = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "bvc" }

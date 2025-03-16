@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.googleServices)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
@@ -79,6 +79,7 @@ kotlin {
         val nonJsMain by getting {
             kotlin.srcDir("build/generated/ksp/nonJsMain")
             dependencies {
+                implementation(libs.koin.core.coroutines)
                 api(libs.androidx.room.runtime)
                 api(libs.sqlite.bundled)
             }
@@ -154,6 +155,20 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+        }
+    }
+    java {
+        toolchain {
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
+        }
+    }
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
         }
     }
     compileOptions {

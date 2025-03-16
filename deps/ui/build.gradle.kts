@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -52,7 +52,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.kkapps.common.ui"
+    namespace = "com.kkapps.libs.ui"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].resources.srcDirs("src/commonMain/composeResources")

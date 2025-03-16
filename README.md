@@ -26,8 +26,18 @@ If you face any issues, please report them on [GitHub](https://github.com/JetBra
 You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
 
 Running the app on different platforms:
-- Android : Select `composeApp` configuration in android studio or run `./gradlew :composeApp:assembleDebug` in Terminal
+
+- Android : Select `composeApp` configuration in android studio 
+  - run `./gradlew :composeApp:assembleDebug` in Terminal
 - iOS: Select `iosApp` configuration in android studio
 - Desktop: run `./gradlew :composeApp:run` in Terminal
   - Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun` or `./gradlew :composeApp:wasmJsBrowserRun` in Terminal
 - Server: run `./gradlew :server:run` in Terminal
+
+Demos
+- Android : Select `calendarAndroid` configuration in android studio
+  - `./gradlew :demos:calendar:assembleDebug` in Terminal
+- iOS: Select `calendarIos` configuration in android studio
+- Desktop: run `./gradlew :demos:calendar:run` in Terminal
+- Web: run `./gradlew :demos:calendar:wasmJsBrowserDevelopmentRun`
+  - run `./gradlew :demos:calendar:wasmJsBrowserRun` in Terminal
