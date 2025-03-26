@@ -1,4 +1,4 @@
-package com.kkapps.bubbles.core.presentation.utils
+package com.kkapps.bubbles.core.presentation.animation
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 
 @Composable
 fun PulseAnimation(modifier: Modifier = Modifier) {

@@ -1,4 +1,4 @@
-package com.kkapps.common.ui.cards
+package com.kkapps.common.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Card

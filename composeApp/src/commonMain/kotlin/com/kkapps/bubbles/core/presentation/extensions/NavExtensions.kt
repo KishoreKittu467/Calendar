@@ -1,4 +1,4 @@
-package com.kkapps.bubbles.core.presentation.utils
+package com.kkapps.bubbles.core.presentation.extensions
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

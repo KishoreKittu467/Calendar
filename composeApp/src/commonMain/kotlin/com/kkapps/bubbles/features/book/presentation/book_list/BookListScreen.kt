@@ -37,9 +37,9 @@ import bubbles.composeapp.generated.resources.favorites
 import bubbles.composeapp.generated.resources.no_favorite_books
 import bubbles.composeapp.generated.resources.no_search_results
 import bubbles.composeapp.generated.resources.search_results
-import com.kkapps.bubbles.core.presentation.utils.DarkBlue
-import com.kkapps.bubbles.core.presentation.utils.DesertWhite
-import com.kkapps.bubbles.core.presentation.utils.SandYellow
+import com.kkapps.bubbles.core.presentation.theme.DarkBlue
+import com.kkapps.bubbles.core.presentation.theme.DesertWhite
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import com.kkapps.bubbles.features.book.domain.entities.Book
 import com.kkapps.bubbles.features.book.presentation.book_list.components.BookList
 import com.kkapps.bubbles.features.book.presentation.book_list.components.BookSearchBar

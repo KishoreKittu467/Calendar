@@ -1,4 +1,4 @@
-package com.kkapps.bubbles.core.presentation.utils
+package com.kkapps.bubbles.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

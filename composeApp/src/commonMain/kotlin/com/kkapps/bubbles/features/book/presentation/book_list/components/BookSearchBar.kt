@@ -25,9 +25,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import bubbles.composeapp.generated.resources.Res
 import bubbles.composeapp.generated.resources.close_hint
 import bubbles.composeapp.generated.resources.search_hint
-import com.kkapps.bubbles.core.presentation.utils.DarkBlue
-import com.kkapps.bubbles.core.presentation.utils.DesertWhite
-import com.kkapps.bubbles.core.presentation.utils.SandYellow
+import com.kkapps.bubbles.core.presentation.theme.DarkBlue
+import com.kkapps.bubbles.core.presentation.theme.DesertWhite
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

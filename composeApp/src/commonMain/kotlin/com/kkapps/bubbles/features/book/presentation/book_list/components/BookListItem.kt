@@ -40,9 +40,9 @@ import bubbles.composeapp.generated.resources.Res
 import bubbles.composeapp.generated.resources.book_error_2
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
-import com.kkapps.bubbles.core.presentation.utils.LightBlue
-import com.kkapps.bubbles.core.presentation.utils.PulseAnimation
-import com.kkapps.bubbles.core.presentation.utils.SandYellow
+import com.kkapps.bubbles.core.presentation.theme.LightBlue
+import com.kkapps.bubbles.core.presentation.animation.PulseAnimation
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import com.kkapps.bubbles.features.book.domain.entities.Book
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round

@@ -1,0 +1,3 @@
+package metaModel
+
+interface FieldType

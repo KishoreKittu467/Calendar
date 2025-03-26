@@ -1,4 +1,4 @@
-\This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop, Server.
+This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop, Server.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -23,20 +23,25 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
 If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+
+Retrieve elements fast: Map<String, Any>
+No duplicates: Set<Any>
+Maintain order: List<Any>
+No duplicates & maintain order: 
 
 Running the app on different platforms:
 
-- Android : Select `composeApp` configuration in android studio 
+- Android : Select `AndroidApp` configuration in android studio
   - run `./gradlew :composeApp:assembleDebug` in Terminal
 - iOS: Select `iosApp` configuration in android studio
 - Desktop: run `./gradlew :composeApp:run` in Terminal
-  - Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun` or `./gradlew :composeApp:wasmJsBrowserRun` in Terminal
+  - Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`
+  - `./gradlew :composeApp:wasmJsBrowserRun` in Terminal
 - Server: run `./gradlew :server:run` in Terminal
 
 Demos
 - Android : Select `calendarAndroid` configuration in android studio
-  - `./gradlew :demos:calendar:assembleDebug` in Terminal
+  - run `./gradlew :demos:calendar:assembleDebug` in Terminal
 - iOS: Select `calendarIos` configuration in android studio
 - Desktop: run `./gradlew :demos:calendar:run` in Terminal
 - Web: run `./gradlew :demos:calendar:wasmJsBrowserDevelopmentRun`

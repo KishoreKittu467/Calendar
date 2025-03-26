@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.kkapps.bubbles.core.presentation.utils.sharedKoinViewModel
+import com.kkapps.bubbles.core.presentation.extensions.sharedKoinViewModel
 import com.kkapps.bubbles.features.book.presentation.SelectedBookViewModel
 import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailAction
 import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailViewModel

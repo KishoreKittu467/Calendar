@@ -32,7 +32,7 @@ import bubbles.composeapp.generated.resources.languages
 import bubbles.composeapp.generated.resources.pages
 import bubbles.composeapp.generated.resources.rating
 import bubbles.composeapp.generated.resources.synopsis
-import com.kkapps.bubbles.core.presentation.utils.SandYellow
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailAction
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.BlurredImageBackground
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.BookChip

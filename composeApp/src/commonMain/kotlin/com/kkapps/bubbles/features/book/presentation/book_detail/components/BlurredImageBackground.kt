@@ -43,10 +43,10 @@ import bubbles.composeapp.generated.resources.go_back
 import bubbles.composeapp.generated.resources.mark_as_favorite
 import bubbles.composeapp.generated.resources.remove_from_favorites
 import coil3.compose.rememberAsyncImagePainter
-import com.kkapps.bubbles.core.presentation.utils.DarkBlue
-import com.kkapps.bubbles.core.presentation.utils.DesertWhite
-import com.kkapps.bubbles.core.presentation.utils.PulseAnimation
-import com.kkapps.bubbles.core.presentation.utils.SandYellow
+import com.kkapps.bubbles.core.presentation.theme.DarkBlue
+import com.kkapps.bubbles.core.presentation.theme.DesertWhite
+import com.kkapps.bubbles.core.presentation.animation.PulseAnimation
+import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
