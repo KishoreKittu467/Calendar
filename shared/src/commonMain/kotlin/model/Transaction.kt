@@ -1,6 +1,6 @@
 package model
 
-import metaModel.FieldType
+import metaModel.IFieldType
 
 /**
  * [isMarked] (isImportant)
@@ -28,14 +28,14 @@ data class Transaction(
     private val iEvent: IEvent
 ): ITransaction, IEvent by iEvent
 
-sealed interface TxType: FieldType {
+sealed interface TxType: IFieldType {
     data object Paid: TxType
     data object Took: TxType
     data object Debt: TxType
     data object Credit: TxType
 }
 
-sealed interface TxStatus: FieldType {
+sealed interface TxStatus: IFieldType {
     data object Asset: TxStatus
     data object Liability: TxStatus
     data object Inflow: TxStatus

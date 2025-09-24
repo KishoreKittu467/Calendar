@@ -24,10 +24,5 @@ class ContactViewModel : ViewModel() {
             initialValue = ContactState()
         )
         
-        fun onAction(action: ContactAction) {
-            when(action) {
-                else -> {}
-            }
-        }
-
+        fun onAction(action: ContactAction) {}
 }

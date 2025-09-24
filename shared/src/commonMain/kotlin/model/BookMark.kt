@@ -1,8 +1,6 @@
 package model
 
-import metaModel.FieldType
-import model.BookmarkType.Link
-import model.BookmarkType.Location
+import metaModel.IFieldType
 
 /**
  * [image] // Image or Icon for Bookmark //
@@ -29,7 +27,7 @@ data class BookMark(
  * [Location]
  * @sample IEntity(name = "My Home Location", notes = "Location of my own house", image = Image(icon = "🏠"))
  * */
-sealed class BookmarkType(val details: IEntity) : FieldType {
+sealed class BookmarkType(val details: IEntity) : IFieldType {
     data class Profile(val profileDetails: IPerson) : BookmarkType(profileDetails)
     data class Link(val linkDetails: IEntity) : BookmarkType(linkDetails)
     data class File(val fileDetails: IEntity) : BookmarkType(fileDetails)

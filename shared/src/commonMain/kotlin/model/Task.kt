@@ -1,6 +1,6 @@
 package model
 
-import metaModel.FieldType
+import metaModel.IFieldType
 
 /**
  * [subGroup] /List of the Task/
@@ -25,7 +25,7 @@ data class Task(
     private val iEvent: IEvent,
 ) : ITask, IEvent by iEvent
 
-sealed class TaskStatus(val percentage: Byte) : FieldType {
+sealed class TaskStatus(val percentage: Byte) : IFieldType {
     data class Pending(val donePercentage: Byte) : TaskStatus(donePercentage)
     data object Completed : TaskStatus(100)
     data class Overdue(val currentStatus: Pending) : TaskStatus(currentStatus.percentage)

@@ -1,7 +1,7 @@
 package model
 
 /**
- * [rank] //Can be used for Suggestions, Sorting, Priority//
+ * [rank] // Can be used for Suggestions, Sorting, Priority //
  * */
 interface IEntity {
     val name: String

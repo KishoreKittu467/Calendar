@@ -70,7 +70,7 @@ data class HabitMeta(
     private val iEntity: IEntity
 ) : IHabitMeta, IEntity by iEntity
 
-sealed interface HabitType : FieldType {
+sealed interface HabitType : IFieldType {
     data object Default : HabitType
     data object MilestoneOnly : HabitType
     data object ScoreOnly : HabitType

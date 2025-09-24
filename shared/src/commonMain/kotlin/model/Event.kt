@@ -1,6 +1,6 @@
 package model
 
-import metaModel.FieldType
+import metaModel.IFieldType
 
 /**
  * [id] = Auto Generated,
@@ -60,7 +60,7 @@ data class Event(
     private val iEntity: IEntity
 ) : IEvent, IEntity by iEntity
 
-sealed interface EventType : FieldType {
+sealed interface EventType : IFieldType {
     data object Event : EventType
     data object Task : EventType
     data object Notes : EventType

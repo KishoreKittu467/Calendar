@@ -1,7 +1,7 @@
 package model
 
 /**
- * No Doc
+ * [dateTime] is start time of the day in milliseconds since epoch.
  * */
 interface IDay {
     val dateTime: Long

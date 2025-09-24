@@ -1,6 +1,6 @@
 package model
 
-import metaModel.FieldType
+import metaModel.IFieldType
 
 /**
  * [name] is Unique //Represents Goal name in Habits//Do not allow special characters//
@@ -61,7 +61,7 @@ data class Milestone(
     private val iEntity: IEntity
 ): IMilestone, IEntity by iEntity
 
-sealed interface BettermentType: FieldType {
+sealed interface BettermentType: IFieldType {
     data object LowerIsBetter: BettermentType
     data object HigherIsBetter: BettermentType
     data object CloserIsBetter: BettermentType

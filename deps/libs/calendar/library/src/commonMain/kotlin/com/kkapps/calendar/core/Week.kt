@@ -7,6 +7,7 @@ import androidx.compose.runtime.Immutable
  *
  * @param days the days in this week.
  */
+@ConsistentCopyVisibility
 @Immutable
 public data class Week internal constructor(val days: List<WeekDay>) {
     override fun equals(other: Any?): Boolean {

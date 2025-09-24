@@ -34,6 +34,7 @@ Running the app on different platforms:
 - Android : Select `AndroidApp` configuration in android studio
   - run `./gradlew :composeApp:assembleDebug` in Terminal
 - iOS: Select `iosApp` configuration in android studio
+  - Run `./gradlew :composeApp:embedAndSignAppleFrameworkForXcode`
 - Desktop: run `./gradlew :composeApp:run` in Terminal
   - Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`
   - `./gradlew :composeApp:wasmJsBrowserRun` in Terminal

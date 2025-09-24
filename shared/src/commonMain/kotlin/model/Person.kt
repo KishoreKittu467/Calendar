@@ -1,6 +1,6 @@
 package model
 
-import metaModel.FieldType
+import metaModel.IFieldType
 
 /**
  * [id] == null ? /System or Main User/ : /Other User/
@@ -60,7 +60,7 @@ data class Person(
     private val iEntity: IEntity
 ): IPerson, IEntity by iEntity
 
-sealed interface Gender: FieldType {
+sealed interface Gender: IFieldType {
     data object Male: Gender
     data object Female: Gender
     data object Other: Gender
