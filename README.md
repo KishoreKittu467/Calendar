@@ -49,6 +49,13 @@ View the multiplatform sample project online at https://calendar.kizitonwose.dev
 
 View the multiplatform sample project's source code [here](https://github.com/kizitonwose/Calendar/tree/main/compose-multiplatform/sample)
 
+## Run
+- Android : Select `calendarAndroid` configuration in android studio
+    - run `./gradlew :deps:libs:kk_calendar:sample:assembleDebug` in Terminal
+- iOS: Select `calendarIos` configuration in android studio
+- Desktop: run `./gradlew :deps:libs:kk_calendar:sample:run` in Terminal
+- Web: run `./gradlew :deps:libs:kk_calendar:sample:wasmJsBrowserDevelopmentRun`
+
 ## Setup
 
 The library provides the following artifacts: 
