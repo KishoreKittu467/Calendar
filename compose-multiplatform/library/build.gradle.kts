@@ -1,7 +1,7 @@
 
-import com.kizitonwose.calendar.buildsrc.Android
-import com.kizitonwose.calendar.buildsrc.Config
-import com.kizitonwose.calendar.buildsrc.Version
+//import com.kizitonwose.calendar.buildsrc.Android
+//import com.kizitonwose.calendar.buildsrc.Config
+//import com.kizitonwose.calendar.buildsrc.Version
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
@@ -47,7 +47,7 @@ kotlin {
 
     sourceSets {
         val commonMain by getting
-        val webMain by getting
+        val wasmJsMain by getting
         val nativeMain by getting
         val desktopMain by getting
         val androidMain by getting
@@ -72,7 +72,7 @@ kotlin {
         val nonJvmMain by creating {
             dependsOn(commonMain)
             nativeMain.dependsOn(this)
-            webMain.dependsOn(this)
+            wasmJsMain.dependsOn(this)
             dependencies {
                 api(libs.kotlinx.serialization.core)
             }
@@ -94,14 +94,14 @@ kotlin {
 
 android {
     namespace = "com.kizitonwose.calendar.compose.multiplatform"
-    compileSdk = Android.compileSdk
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        minSdk = Android.minSdk
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
     packaging {
         resources {
@@ -110,12 +110,16 @@ android {
     }
     java {
         toolchain {
-            languageVersion.set(Config.compatibleJavaLanguageVersion)
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
         }
     }
     kotlin {
         jvmToolchain {
-            languageVersion.set(Config.compatibleJavaLanguageVersion)
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
         }
         compilerOptions {
             optIn.add("kotlin.time.ExperimentalTime")
@@ -130,5 +134,5 @@ android {
 }
 
 mavenPublishing {
-    coordinates(version = Version.multiplatform)
+    coordinates(version = "2.9.1-SNAPSHOT")
 }

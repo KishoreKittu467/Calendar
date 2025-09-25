@@ -121,7 +121,7 @@ val flightDateTimeFormatter by lazy {
     LocalDateTime.Format {
         dayOfWeek(DayOfWeekNames(DayOfWeekNames.ENGLISH_ABBREVIATED.names.map { it.uppercase() }))
         char('\n')
-        dayOfMonth(Padding.ZERO)
+        day(Padding.ZERO)
         char(' ')
         monthName(MonthNames(MonthNames.ENGLISH_ABBREVIATED.names.map { it.uppercase() }))
         char('\n')

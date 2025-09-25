@@ -287,7 +287,7 @@ private fun Day(
             DayPosition.InDate, DayPosition.OutDate -> Colors.example1WhiteLight
         }
         Text(
-            text = day.date.dayOfMonth.toString(),
+            text = day.date.day.toString(),
             color = textColor,
             fontSize = 15.sp,
         )

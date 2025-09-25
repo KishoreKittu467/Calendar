@@ -171,7 +171,7 @@ private fun Day(
     ) {
         if (day.position == DayPosition.MonthDate) {
             Text(
-                text = day.date.dayOfMonth.toString(),
+                text = day.date.day.toString(),
                 fontSize = if (isTablet) 10.sp else 9.sp,
                 color = if (isSelected) Color.White else Color.Unspecified,
             )

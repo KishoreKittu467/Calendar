@@ -137,7 +137,7 @@ private fun Day(day: CalendarDay) {
         if (day.position == DayPosition.MonthDate) {
             Text(
                 modifier = Modifier.align(Alignment.Center),
-                text = day.date.dayOfMonth.toString(),
+                text = day.date.day.toString(),
                 color = Color.Black,
                 fontSize = 14.sp,
             )

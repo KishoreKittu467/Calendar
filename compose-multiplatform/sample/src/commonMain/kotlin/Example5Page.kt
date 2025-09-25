@@ -68,7 +68,7 @@ fun Example5Page(close: () -> Unit = {}) {
 
 private val dateFormatter by lazy {
     LocalDate.Format {
-        dayOfMonth(Padding.ZERO)
+        day(Padding.ZERO)
     }
 }
 

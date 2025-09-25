@@ -1,6 +1,6 @@
 
-import com.kizitonwose.calendar.buildsrc.Android
-import com.kizitonwose.calendar.buildsrc.Config
+//import com.kizitonwose.calendar.buildsrc.Android
+//import com.kizitonwose.calendar.buildsrc.Config
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
@@ -16,10 +16,10 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        outputModuleName = "composeApp"
+        outputModuleName = "kkCalendar"
         browser {
             commonWebpackConfig {
-                outputFileName = "composeApp.js"
+                outputFileName = "kkCalendar.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -32,10 +32,10 @@ kotlin {
     }
 
     js(IR) {
-        outputModuleName = "composeJsApp"
+        outputModuleName = "kkCalendar"
         browser {
             commonWebpackConfig {
-                outputFileName = "composeJsApp.js"
+                outputFileName = "kkCalendar.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -58,7 +58,7 @@ kotlin {
         iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "KkCalendar"
             isStatic = true
         }
     }
@@ -70,7 +70,7 @@ kotlin {
         val nativeMain by getting
         val desktopMain by getting
         val androidMain by getting
-        val webMain by getting
+        val wasmJsMain by getting
         val jvmMain by creating {
             dependsOn(commonMain)
         }
@@ -86,14 +86,14 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 //            implementation("com.kizitonwose.calendar:compose-multiplatform:2.6.0-alpha02")
-            implementation(project(":compose-multiplatform:library"))
+            implementation(projects.deps.libs.kkCalendar.composeMultiplatform.library)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.jetbrains.material.icons)
         }
         val nonJvmMain by creating {
             dependsOn(commonMain)
             nativeMain.dependsOn(this)
-            webMain.dependsOn(this)
+            wasmJsMain.dependsOn(this)
             dependencies {}
         }
         desktopMain.dependsOn(jvmMain)
@@ -110,7 +110,7 @@ kotlin {
 
 android {
     namespace = "com.kizitonwose.calendar.compose.multiplatform.sample"
-    compileSdk = Android.compileSdk
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -118,8 +118,8 @@ android {
 
     defaultConfig {
         applicationId = "com.kizitonwose.calendar.compose.multiplatform.sample"
-        minSdk = Android.minSdk
-        targetSdk = Android.targetSdk
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -135,12 +135,16 @@ android {
     }
     java {
         toolchain {
-            languageVersion.set(Config.compatibleJavaLanguageVersion)
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
         }
     }
     kotlin {
         jvmToolchain {
-            languageVersion.set(Config.compatibleJavaLanguageVersion)
+            languageVersion.set(
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
+            )
         }
     }
     buildFeatures {

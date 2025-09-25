@@ -286,7 +286,7 @@ object Example9PageSharedComponents {
                 else -> Colors.example4GrayPast
             }
             Text(
-                text = day.dayOfMonth.toString(),
+                text = day.day.toString(),
                 color = textColor,
                 fontSize = 14.sp,
             )

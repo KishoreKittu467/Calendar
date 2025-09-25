@@ -150,7 +150,7 @@ private fun Day(
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = day.date.dayOfMonth.toString(),
+            text = day.date.day.toString(),
             color = textColor,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,

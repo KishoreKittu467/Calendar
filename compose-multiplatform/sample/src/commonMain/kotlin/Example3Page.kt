@@ -192,7 +192,7 @@ private fun Day(
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .padding(top = 3.dp, end = 4.dp),
-            text = day.date.dayOfMonth.toString(),
+            text = day.date.day.toString(),
             color = textColor,
             fontSize = 12.sp,
         )

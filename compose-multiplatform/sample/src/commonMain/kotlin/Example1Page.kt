@@ -130,7 +130,7 @@ private fun Day(day: CalendarDay, isSelected: Boolean, onClick: (CalendarDay) ->
             DayPosition.InDate, DayPosition.OutDate -> Colors.example4GrayPast
         }
         Text(
-            text = day.date.dayOfMonth.toString(),
+            text = day.date.day.toString(),
             color = textColor,
             fontSize = 14.sp,
         )
