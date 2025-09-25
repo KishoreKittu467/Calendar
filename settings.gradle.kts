@@ -4,10 +4,10 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google {
-            mavenContent {
-                includeGroupAndSubgroups("androidx")
-                includeGroupAndSubgroups("com.android")
-                includeGroupAndSubgroups("com.google")
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
             }
         }
         mavenCentral()
@@ -15,13 +15,14 @@ pluginManagement {
     }
 }
 
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositories {
         google {
-            mavenContent {
-                includeGroupAndSubgroups("androidx")
-                includeGroupAndSubgroups("com.android")
-                includeGroupAndSubgroups("com.google")
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
             }
         }
         mavenCentral()
@@ -29,7 +30,9 @@ dependencyResolutionManagement {
 }
 
 // Optimise: Include only projects that are necessary
-include(":composeApp")
 include(":shared")
 include(":server")
 include(":deps:ui")
+include(":deps:libs:kk_calendar:compose-multiplatform:library")
+include(":deps:libs:kk_calendar:compose-multiplatform:sample")
+include(":composeApp")

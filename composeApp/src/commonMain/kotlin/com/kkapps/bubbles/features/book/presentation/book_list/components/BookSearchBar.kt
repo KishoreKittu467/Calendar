@@ -7,9 +7,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +25,8 @@ import bubbles.composeapp.generated.resources.search_hint
 import com.kkapps.bubbles.core.presentation.theme.DarkBlue
 import com.kkapps.bubbles.core.presentation.theme.DesertWhite
 import com.kkapps.bubbles.core.presentation.theme.SandYellow
+import com.kkapps.common.ui.components.icons.CloseIcon
+import com.kkapps.common.ui.components.icons.SearchIcon
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -58,7 +57,7 @@ fun BookSearchBar(
             },
             leadingIcon = {
                 Icon(
-                    imageVector = Icons.Default.Search,
+                    imageVector = SearchIcon,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.66f)
                 )
@@ -83,7 +82,7 @@ fun BookSearchBar(
                         }
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Close,
+                            imageVector = CloseIcon,
                             contentDescription = stringResource(Res.string.close_hint),
                             tint = MaterialTheme.colorScheme.onSurface
                         )

@@ -1,6 +1,5 @@
 package com.kkapps.bubbles.app
 
-import BookDetailScreenRoot
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.material3.MaterialTheme
@@ -15,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.kkapps.bubbles.core.presentation.extensions.sharedKoinViewModel
 import com.kkapps.bubbles.features.book.presentation.SelectedBookViewModel
 import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailAction
+import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailScreenRoot
 import com.kkapps.bubbles.features.book.presentation.book_detail.BookDetailViewModel
 import com.kkapps.bubbles.features.book.presentation.book_list.BookListScreenRoot
 import com.kkapps.bubbles.features.book.presentation.book_list.BookListViewModel

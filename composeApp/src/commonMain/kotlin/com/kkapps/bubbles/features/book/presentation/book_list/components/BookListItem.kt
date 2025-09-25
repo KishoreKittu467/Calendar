@@ -16,9 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -44,6 +41,8 @@ import com.kkapps.bubbles.core.presentation.theme.LightBlue
 import com.kkapps.bubbles.core.presentation.animation.PulseAnimation
 import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import com.kkapps.bubbles.features.book.domain.entities.Book
+import com.kkapps.common.ui.components.icons.KeyboardArrowRightIcon
+import com.kkapps.common.ui.components.icons.StarIcon
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round
 
@@ -160,7 +159,7 @@ fun BookListItem(
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Icon(
-                            imageVector = Icons.Default.Star,
+                            imageVector = StarIcon,
                             contentDescription = null,
                             tint = SandYellow
                         )
@@ -168,7 +167,7 @@ fun BookListItem(
                 }
             }
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                imageVector = KeyboardArrowRightIcon,
                 contentDescription = null,
                 modifier = Modifier
                     .size(36.dp)

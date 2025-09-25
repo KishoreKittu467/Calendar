@@ -18,7 +18,7 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
+        outputModuleName = "composeApp"
         browser {
             commonWebpackConfig {
                 outputFileName = "composeApp.js"
@@ -89,7 +89,7 @@ kotlin {
 
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.androidx.activity.compose)
+            implementation(libs.compose.activity)
             implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
@@ -197,4 +197,27 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+tasks.withType<com.google.devtools.ksp.gradle.KspAATask>().configureEach {
+    // Ensure this specific KSP task depends on the resource generator task
+    if (name == "kspDebugKotlinAndroid") {
+        dependsOn("generateResourceAccessorsForAndroidDebug")
+        dependsOn("generateResourceAccessorsForAndroidMain")
+        dependsOn("generateActualResourceCollectorsForAndroidMain")
+        dependsOn("generateResourceAccessorsForNonJsMain")
+        dependsOn("generateComposeResClass")
+        dependsOn("generateResourceAccessorsForCommonMain")
+        dependsOn("generateExpectResourceCollectorsForCommonMain")
+    }
+    // You might also want to do this for release builds or other variants
+    if (name == "kspReleaseKotlinAndroid") {
+        dependsOn("generateResourceAccessorsForAndroidRelease")
+        dependsOn("generateResourceAccessorsForAndroidMain")
+        dependsOn("generateActualResourceCollectorsForAndroidMain")
+        dependsOn("generateResourceAccessorsForNonJsMain")
+        dependsOn("generateComposeResClass")
+        dependsOn("generateResourceAccessorsForCommonMain")
+        dependsOn("generateExpectResourceCollectorsForCommonMain")
+    }
+    // Add more for other build variants if necessary
 }

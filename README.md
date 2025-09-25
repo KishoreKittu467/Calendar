@@ -42,8 +42,8 @@ Running the app on different platforms:
 
 Demos
 - Android : Select `calendarAndroid` configuration in android studio
-  - run `./gradlew :demos:calendar:assembleDebug` in Terminal
+  - run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:assembleDebug` in Terminal
 - iOS: Select `calendarIos` configuration in android studio
-- Desktop: run `./gradlew :demos:calendar:run` in Terminal
-- Web: run `./gradlew :demos:calendar:wasmJsBrowserDevelopmentRun`
-  - run `./gradlew :demos:calendar:wasmJsBrowserRun` in Terminal
+- Desktop: run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:run` in Terminal
+- Web: run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun`
+  - run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:wasmJsBrowserRun` in Terminal

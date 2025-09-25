@@ -15,10 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -47,6 +43,9 @@ import com.kkapps.bubbles.core.presentation.theme.DarkBlue
 import com.kkapps.bubbles.core.presentation.theme.DesertWhite
 import com.kkapps.bubbles.core.presentation.animation.PulseAnimation
 import com.kkapps.bubbles.core.presentation.theme.SandYellow
+import com.kkapps.common.ui.components.icons.ArrowBackIcon
+import com.kkapps.common.ui.components.icons.FavoriteBorderIcon
+import com.kkapps.common.ui.components.icons.FavoriteIcon
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -114,7 +113,7 @@ fun BlurredImageBackground(
                 .statusBarsPadding()
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                imageVector = ArrowBackIcon,
                 contentDescription = stringResource(Res.string.go_back),
                 tint = Color.White
             )
@@ -167,9 +166,9 @@ fun BlurredImageBackground(
                         ) {
                             Icon(
                                 imageVector = if(isFavorite) {
-                                    Icons.Filled.Favorite
+                                    FavoriteIcon
                                 } else {
-                                    Icons.Outlined.FavoriteBorder
+                                    FavoriteBorderIcon
                                 },
                                 tint = Color.Red,
                                 contentDescription = if(isFavorite) {
