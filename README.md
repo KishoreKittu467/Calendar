@@ -51,11 +51,11 @@ View the multiplatform sample project online at https://calendar.kizitonwose.dev
 View the multiplatform sample project's source code [here](https://github.com/kizitonwose/Calendar/tree/main/compose-multiplatform/sample)
 
 ## Run
-- Android : Select `calendarAndroid` configuration in android studio
-    - run `./gradlew :deps:libs:calendar:sample:assembleDebug` in Terminal
-- iOS: Select `calendarIos` configuration in android studio
-- Desktop: run `./gradlew :deps:libs:calendar:sample:run` in Terminal
-- Web: run `./gradlew :deps:libs:calendar:sample:wasmJsBrowserDevelopmentRun`
+**Calendar**
+[x] Android: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug`
+[ ] iOS: Select `calendar` and run `./gradlew :deps:libs:calendar:compose-multiplatform:sample:embedAndSignAppleFrameworkForXcode`
+[x] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
+[ ] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun`
 
 ## Setup
 

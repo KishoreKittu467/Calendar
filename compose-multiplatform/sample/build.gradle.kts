@@ -16,10 +16,10 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        outputModuleName = "Calendar"
+        outputModuleName = "CalendarSampleWasm"
         browser {
             commonWebpackConfig {
-                outputFileName = "Calendar.js"
+                outputFileName = "CalendarSampleWasm.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -32,10 +32,10 @@ kotlin {
     }
 
     js(IR) {
-        outputModuleName = "Calendar"
+        outputModuleName = "CalendarSampleJs"
         browser {
             commonWebpackConfig {
-                outputFileName = "Calendar.js"
+                outputFileName = "CalendarSampleJs.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -114,7 +114,6 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
         applicationId = "com.kizitonwose.calendar.compose.multiplatform.sample"
@@ -165,4 +164,8 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+tasks.named("wasmJsBrowserDevelopmentRun") {
+    notCompatibleWithConfigurationCache("Reason: Uses Project object or ClassLoader internally")
 }
