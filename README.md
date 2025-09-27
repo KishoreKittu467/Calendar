@@ -29,18 +29,27 @@ No duplicates: Set<Any>
 Maintain order: List<Any>
 No duplicates & maintain order: 
 
-Running the app on different platforms:
+Running the apps on different platforms:
 
-- Android : Select `AndroidApp`
-  - run `./gradlew :composeApp:assembleDebug`
-- iOS: Select `iosApp`
-  - `./gradlew :composeApp:embedAndSignAppleFrameworkForXcode`
-- Desktop: run `./gradlew :composeApp:run`
-- Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`
-- Server: run `./gradlew :server:run`
+## Bubbles App
 
-Demos
-- Android: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:assembleDebug`
-- iOS: Select `calendarIos`
-- Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
-- Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun`
+[x] Android : `AndroidApp`
+    [x] or run `./gradlew :composeApp:installDebug && adb shell monkey -p com.kkapps.bubbles -c android.intent.category.LAUNCHER 1`
+[x] iOS: Select `iosApp`
+[x] Desktop: `./gradlew :composeApp:run`
+[x] Web: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+[x] Server: `./gradlew :server:run`
+
+## Demos
+
+**Calendar**
+[x] Android: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug && adb shell monkey -p com.kizitonwose.calendar.compose.multiplatform.sample -c android.intent.category.LAUNCHER 1`
+[ ] iOS: Select `calendar`
+[x] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
+[x] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+
+**RickTextEditor**
+[x] Android: `./gradlew :deps:libs:rich_text_editor:sample:android:installDebug && adb shell monkey -p com.mohamedrejeb.richeditor.android -c android.intent.category.LAUNCHER 1`
+[ ] iOS: `richTextEditor`
+[x] Desktop: `./gradlew :deps:libs:rich_text_editor:sample:desktop:run`
+[x] Web: `./gradlew :deps:libs:rich_text_editor:sample:web:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)

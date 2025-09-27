@@ -112,6 +112,7 @@ kotlin {
 
             implementation(projects.shared)
             implementation(projects.deps.ui)
+            implementation(projects.deps.libs.calendar.composeMultiplatform.library)
         }
         val desktopMain by getting {
             dependencies {
@@ -220,4 +221,8 @@ tasks.withType<com.google.devtools.ksp.gradle.KspAATask>().configureEach {
         dependsOn("generateExpectResourceCollectorsForCommonMain")
     }
     // Add more for other build variants if necessary
+}
+
+tasks.named("wasmJsBrowserDevelopmentRun") {
+    notCompatibleWithConfigurationCache("Reason: Uses Project object or ClassLoader internally")
 }

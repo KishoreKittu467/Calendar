@@ -1,14 +1,19 @@
 package com.kkapps.bubbles.features.book.presentation.book_detail
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -16,11 +21,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import bubbles.composeapp.generated.resources.Res
 import bubbles.composeapp.generated.resources.description_unavailable
@@ -28,14 +39,25 @@ import bubbles.composeapp.generated.resources.languages
 import bubbles.composeapp.generated.resources.pages
 import bubbles.composeapp.generated.resources.rating
 import bubbles.composeapp.generated.resources.synopsis
+import com.kizitonwose.calendar.compose.HorizontalCalendar
+import com.kizitonwose.calendar.compose.rememberCalendarState
+import com.kizitonwose.calendar.core.CalendarDay
+import com.kizitonwose.calendar.core.DayPosition
+import com.kizitonwose.calendar.core.daysOfWeek
+import com.kizitonwose.calendar.core.minusMonths
+import com.kizitonwose.calendar.core.now
+import com.kizitonwose.calendar.core.plusMonths
 import com.kkapps.bubbles.core.presentation.theme.SandYellow
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.BlurredImageBackground
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.BookChip
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.ChipSize
 import com.kkapps.bubbles.features.book.presentation.book_detail.components.TitledContent
 import com.kkapps.common.ui.components.icons.StarIcon
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.YearMonth
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
+import kotlin.time.ExperimentalTime
 
 @Composable
 fun BookDetailScreenRoot(
@@ -56,11 +78,18 @@ fun BookDetailScreenRoot(
     )
 }
 
+@OptIn(ExperimentalTime::class)
 @Composable
 private fun BookDetailScreen(
     state: BookDetailState,
     onAction: (BookDetailAction) -> Unit
 ) {
+    val currentMonth = remember { YearMonth.now() }
+    val startMonth = remember { currentMonth.minusMonths(1) }
+    val endMonth = remember { currentMonth.plusMonths(1) }
+    val selections = remember { mutableStateListOf<CalendarDay>() }
+    val daysOfWeek = remember { daysOfWeek() }
+
     BlurredImageBackground(
         imageUrl = state.book?.imageUrl,
         isFavorite = state.isFavorite,
@@ -184,8 +213,86 @@ private fun BookDetailScreen(
                         modifier = Modifier
                             .padding(vertical = 8.dp)
                     )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.White)
+                    ) {
+                        val state = rememberCalendarState(
+                            startMonth = startMonth,
+                            endMonth = endMonth,
+                            firstVisibleMonth = currentMonth,
+                            firstDayOfWeek = daysOfWeek.first(),
+                        )
+
+                        HorizontalCalendar(
+                            modifier = Modifier.testTag("Calendar"),
+                            state = state,
+                            dayContent = { day ->
+                                Day(day, isSelected = selections.contains(day)) { clicked ->
+                                    if (selections.contains(clicked)) {
+                                        selections.remove(clicked)
+                                    } else {
+                                        selections.add(clicked)
+                                    }
+                                }
+                            },
+                            monthHeader = {
+                                MonthHeader(daysOfWeek = daysOfWeek)
+                            },
+                        )
+                    }
                 }
             }
         }
+    }
+}
+
+
+@Composable
+private fun MonthHeader(daysOfWeek: List<DayOfWeek>) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag("MonthHeader"),
+    ) {
+        for (dayOfWeek in daysOfWeek) {
+            Text(
+                modifier = Modifier.weight(1f),
+                textAlign = TextAlign.Center,
+                fontSize = 15.sp,
+                text = dayOfWeek.toString(),
+                fontWeight = FontWeight.Medium,
+            )
+        }
+    }
+}
+
+@Composable
+private fun Day(day: CalendarDay, isSelected: Boolean, onClick: (CalendarDay) -> Unit) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f) // This is important for square-sizing!
+            .testTag("MonthDay")
+            .padding(6.dp)
+            .clip(CircleShape)
+            .background(color = if (isSelected) Color.Blue else Color.Transparent)
+            // Disable clicks on inDates/outDates
+            .clickable(
+                enabled = day.position == DayPosition.MonthDate,
+                onClick = { onClick(day) },
+            ),
+        contentAlignment = Alignment.Center,
+    ) {
+        val textColor = when (day.position) {
+            // Color.Unspecified will use the default text color from the current theme
+            DayPosition.MonthDate -> if (isSelected) Color.White else Color.Unspecified
+            DayPosition.InDate, DayPosition.OutDate -> Color.Gray
+        }
+        Text(
+            text = day.date.day.toString(),
+            color = textColor,
+            fontSize = 14.sp,
+        )
     }
 }
