@@ -3,4 +3,4 @@
 	url = https://github.com/KishoreKittu467/Calendar.git
 [submodule "deps/libs/rich_text_editor"]
 	path = deps/libs/rich_text_editor
-	url = git@github.com:KishoreKittu467/compose-rich-editor.git
+	url = https://github.com/KishoreKittu467/compose-rich-editor.git
