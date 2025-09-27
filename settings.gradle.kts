@@ -33,6 +33,6 @@ dependencyResolutionManagement {
 include(":shared")
 include(":server")
 include(":deps:ui")
-include(":deps:libs:kk_calendar:compose-multiplatform:library")
-include(":deps:libs:kk_calendar:compose-multiplatform:sample")
+include(":deps:libs:calendar:compose-multiplatform:library")
+include(":deps:libs:calendar:compose-multiplatform:sample")
 include(":composeApp")

@@ -31,19 +31,16 @@ No duplicates & maintain order:
 
 Running the app on different platforms:
 
-- Android : Select `AndroidApp` configuration in android studio
-  - run `./gradlew :composeApp:assembleDebug` in Terminal
-- iOS: Select `iosApp` configuration in android studio
-  - Run `./gradlew :composeApp:embedAndSignAppleFrameworkForXcode`
-- Desktop: run `./gradlew :composeApp:run` in Terminal
-  - Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`
-  - `./gradlew :composeApp:wasmJsBrowserRun` in Terminal
-- Server: run `./gradlew :server:run` in Terminal
+- Android : Select `AndroidApp`
+  - run `./gradlew :composeApp:assembleDebug`
+- iOS: Select `iosApp`
+  - `./gradlew :composeApp:embedAndSignAppleFrameworkForXcode`
+- Desktop: run `./gradlew :composeApp:run`
+- Web: run `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`
+- Server: run `./gradlew :server:run`
 
 Demos
-- Android : Select `calendarAndroid` configuration in android studio
-  - run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:assembleDebug` in Terminal
-- iOS: Select `calendarIos` configuration in android studio
-- Desktop: run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:run` in Terminal
-- Web: run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun`
-  - run `./gradlew :deps:libs:kk_calendar:compose-multiplatform:sample:wasmJsBrowserRun` in Terminal
+- Android: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:assembleDebug`
+- iOS: Select `calendarIos`
+- Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
+- Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun`
