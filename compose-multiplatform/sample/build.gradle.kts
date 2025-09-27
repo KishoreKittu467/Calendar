@@ -16,10 +16,10 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        outputModuleName = "kkCalendar"
+        outputModuleName = "Calendar"
         browser {
             commonWebpackConfig {
-                outputFileName = "kkCalendar.js"
+                outputFileName = "Calendar.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -32,10 +32,10 @@ kotlin {
     }
 
     js(IR) {
-        outputModuleName = "kkCalendar"
+        outputModuleName = "Calendar"
         browser {
             commonWebpackConfig {
-                outputFileName = "kkCalendar.js"
+                outputFileName = "Calendar.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
@@ -58,7 +58,7 @@ kotlin {
         iosSimulatorArm64(),
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "KkCalendar"
+            baseName = "Calendar"
             isStatic = true
         }
     }
@@ -86,7 +86,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 //            implementation("com.kizitonwose.calendar:compose-multiplatform:2.6.0-alpha02")
-            implementation(projects.deps.libs.kkCalendar.composeMultiplatform.library)
+            implementation(projects.deps.libs.calendar.composeMultiplatform.library)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.jetbrains.material.icons)
         }

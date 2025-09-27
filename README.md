@@ -12,6 +12,7 @@ A highly customizable calendar library for Android and Compose Multiplatform, ba
 
 ![Preview Phone](https://user-images.githubusercontent.com/15170090/197389318-b3925b65-aed9-4e1f-a778-ba73007cbdf7.png)
 
+
 ![Preview Web Tablet](https://github.com/user-attachments/assets/df7b11bb-23f8-423a-bbd4-9ade376a14be)
 
 ## Features
@@ -51,10 +52,10 @@ View the multiplatform sample project's source code [here](https://github.com/ki
 
 ## Run
 - Android : Select `calendarAndroid` configuration in android studio
-    - run `./gradlew :deps:libs:kk_calendar:sample:assembleDebug` in Terminal
+    - run `./gradlew :deps:libs:calendar:sample:assembleDebug` in Terminal
 - iOS: Select `calendarIos` configuration in android studio
-- Desktop: run `./gradlew :deps:libs:kk_calendar:sample:run` in Terminal
-- Web: run `./gradlew :deps:libs:kk_calendar:sample:wasmJsBrowserDevelopmentRun`
+- Desktop: run `./gradlew :deps:libs:calendar:sample:run` in Terminal
+- Web: run `./gradlew :deps:libs:calendar:sample:wasmJsBrowserDevelopmentRun`
 
 ## Setup
 
