@@ -33,23 +33,29 @@ Running the apps on different platforms:
 
 ## Bubbles App
 
-[x] Android : `AndroidApp`
-    [x] or run `./gradlew :composeApp:installDebug && adb shell monkey -p com.kkapps.bubbles -c android.intent.category.LAUNCHER 1`
-[x] iOS: Select `iosApp`
-[x] Desktop: `./gradlew :composeApp:run`
-[x] Web: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
-[x] Server: `./gradlew :server:run`
+[X] Android : `AndroidApp`
+    [X] or run in terminal: `./gradlew :composeApp:installDebug && adb shell monkey -p com.kkapps.bubbles -c android.intent.category.LAUNCHER 1`
+[X] iOS: Select `iosApp`
+[X] Desktop: `./gradlew :composeApp:run`
+[X] Web: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+[X] Server: `./gradlew :server:run`
 
 ## Demos
 
 **Calendar**
-[x] Android: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug && adb shell monkey -p com.kizitonwose.calendar.compose.multiplatform.sample -c android.intent.category.LAUNCHER 1`
+[X] Android: `AndroidCalendarSample`
+    [X] or run in terminal: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug && adb shell monkey -p com.kizitonwose.calendar.compose.multiplatform.sample -c android.intent.category.LAUNCHER 1`
 [ ] iOS: Select `calendar`
-[x] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
-[x] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+    [ ] `BUG:` Not installing
+[X] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
+[X] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+    [ ] `BUG:` Showing blank screen
 
 **RickTextEditor**
-[x] Android: `./gradlew :deps:libs:rich_text_editor:sample:android:installDebug && adb shell monkey -p com.mohamedrejeb.richeditor.android -c android.intent.category.LAUNCHER 1`
+[X] Android: `AndroidRichTextEditorSample`
+    [X] or run in terminal: `./gradlew :deps:libs:rich_text_editor:sample:android:installDebug && adb shell monkey -p com.mohamedrejeb.richeditor -c android.intent.category.LAUNCHER 1`
 [ ] iOS: `richTextEditor`
-[x] Desktop: `./gradlew :deps:libs:rich_text_editor:sample:desktop:run`
-[x] Web: `./gradlew :deps:libs:rich_text_editor:sample:web:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
+    [ ] `BUG:` Not installing
+[X] Desktop: `./gradlew :deps:libs:rich_text_editor:sample:desktop:run`
+[X] Web: `./gradlew :deps:libs:rich_text_editor:sample:web:wasmJsBrowserDevelopmentRun --info`
+    [ ] `BUG:` Not covering entire screen, Viewport kept on expanding as window size changes
