@@ -1,12 +1,9 @@
-
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -19,11 +16,8 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -64,45 +58,45 @@ fun App() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Demo(modifier: Modifier = Modifier) {
-    var toolBarTitle by remember { mutableStateOf("") }
-    var toolBarVisible by remember { mutableStateOf(true) }
-    var toolBarBackButtonVisible by remember { mutableStateOf(true) }
+//    var toolBarTitle by remember { mutableStateOf("") }
+//    var toolBarVisible by remember { mutableStateOf(true) }
+//    var toolBarBackButtonVisible by remember { mutableStateOf(true) }
     val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     LaunchedEffect(navController) {
         navController.currentBackStackEntryFlow.collect { backStackEntry ->
-            val page = Page.valueOf(backStackEntry.destination.route ?: return@collect)
-            toolBarTitle = page.title
-            toolBarVisible = page.showToolBar
-            toolBarBackButtonVisible = page != Page.List
+//            val page = Page.valueOf(backStackEntry.destination.route ?: return@collect)
+//            toolBarTitle = page.title
+//            toolBarVisible = page.showToolBar
+//            toolBarBackButtonVisible = page != Page.List
         }
     }
     Scaffold(
         modifier = modifier,
-        topBar = {
-            if (toolBarVisible) {
-                Column {
-                    ExampleToolbar(
-                        title = toolBarTitle,
-                        colors = if (isMobile()) blueToolbar else whiteToolbar,
-                        navigationIcon = navIcon@{
-                            if (toolBarBackButtonVisible) {
-                                NavigationIcon(
-                                    tint = if (isMobile()) Color.White else Color.Black,
-                                ) {
-                                    navController.popBackStack()
-                                }
-                            }
-                        },
-                    )
-                    // Add divider to separate the white toolbar.
-                    if (!isMobile()) {
-                        HorizontalDivider()
-                    }
-                }
-            }
-        },
+//        topBar = {
+//            if (toolBarVisible) {
+//                Column {
+//                    ExampleToolbar(
+//                        title = toolBarTitle,
+//                        colors = if (isMobile()) blueToolbar else whiteToolbar,
+//                        navigationIcon = navIcon@{
+//                            if (toolBarBackButtonVisible) {
+//                                NavigationIcon(
+//                                    tint = if (isMobile()) Color.White else Color.Black,
+//                                ) {
+//                                    navController.popBackStack()
+//                                }
+//                            }
+//                        },
+//                    )
+//                    // Add divider to separate the white toolbar.
+//                    if (!isMobile()) {
+//                        HorizontalDivider()
+//                    }
+//                }
+//            }
+//        },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
         },
@@ -186,10 +180,10 @@ private val blueToolbar
         titleContentColor = Color.White,
     )
 
-@OptIn(ExperimentalMaterial3Api::class)
-private val whiteToolbar
-    @Composable
-    get() = TopAppBarDefaults.topAppBarColors(
-        containerColor = Color.White,
-        titleContentColor = Color.Black,
-    )
+//@OptIn(ExperimentalMaterial3Api::class)
+//private val whiteToolbar
+//    @Composable
+//    get() = TopAppBarDefaults.topAppBarColors(
+//        containerColor = Color.White,
+//        titleContentColor = Color.Black,
+//    )
