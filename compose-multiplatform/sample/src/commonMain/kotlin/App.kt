@@ -26,6 +26,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
+import com.kizitonwose.calendar.compose.dateRangeDisplayText
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.roundToInt
@@ -79,11 +81,11 @@ private fun Demo(modifier: Modifier = Modifier) {
 //                Column {
 //                    ExampleToolbar(
 //                        title = toolBarTitle,
-//                        colors = if (isMobile()) blueToolbar else whiteToolbar,
+//                        colors = if (com.kizitonwose.calendar.compose.isMobile()) blueToolbar else whiteToolbar,
 //                        navigationIcon = navIcon@{
 //                            if (toolBarBackButtonVisible) {
 //                                NavigationIcon(
-//                                    tint = if (isMobile()) Color.White else Color.Black,
+//                                    tint = if (com.kizitonwose.calendar.compose.isMobile()) Color.White else Color.Black,
 //                                ) {
 //                                    navController.popBackStack()
 //                                }
@@ -91,7 +93,7 @@ private fun Demo(modifier: Modifier = Modifier) {
 //                        },
 //                    )
 //                    // Add divider to separate the white toolbar.
-//                    if (!isMobile()) {
+//                    if (!com.kizitonwose.calendar.compose.isMobile()) {
 //                        HorizontalDivider()
 //                    }
 //                }

@@ -1,4 +1,4 @@
-
+package com.kizitonwose.calendar.compose
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.animateScrollBy
@@ -29,8 +29,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.kizitonwose.calendar.compose.CalendarLayoutInfo
-import com.kizitonwose.calendar.compose.CalendarState
 import com.kizitonwose.calendar.compose.weekcalendar.WeekCalendarState
 import com.kizitonwose.calendar.compose.yearcalendar.YearCalendarLayoutInfo
 import com.kizitonwose.calendar.compose.yearcalendar.YearCalendarState
@@ -86,7 +84,7 @@ fun NavigationIcon(
             .clip(shape = CircleShape)
             .clickable(role = Role.Button, onClick = onBackClick),
     ) {
-        Icon(
+        Icon (
             tint = tint,
             modifier = Modifier.align(Alignment.Center),
             imageVector = imageVector,

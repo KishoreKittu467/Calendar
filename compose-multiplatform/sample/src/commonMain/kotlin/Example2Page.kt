@@ -1,6 +1,5 @@
-import ContinuousSelectionHelper.getSelection
+import com.kizitonwose.calendar.compose.ContinuousSelectionHelper.getSelection
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,7 +37,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kizitonwose.calendar.compose.DateSelection
+import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
 import com.kizitonwose.calendar.compose.VerticalCalendar
+import com.kizitonwose.calendar.compose.clickable
+import com.kizitonwose.calendar.compose.displayText
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.CalendarMonth

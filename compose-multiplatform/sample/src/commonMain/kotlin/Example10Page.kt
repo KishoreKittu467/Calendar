@@ -37,6 +37,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kizitonwose.calendar.compose.HorizontalYearCalendar
+import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
+import com.kizitonwose.calendar.compose.animateScrollAndCenterItem
+import com.kizitonwose.calendar.compose.clickable
+import com.kizitonwose.calendar.compose.displayText
+import com.kizitonwose.calendar.compose.isMobile
+import com.kizitonwose.calendar.compose.rememberFirstVisibleYearAfterScroll
 import com.kizitonwose.calendar.compose.yearcalendar.YearContentHeightMode
 import com.kizitonwose.calendar.compose.yearcalendar.rememberYearCalendarState
 import com.kizitonwose.calendar.core.CalendarDay

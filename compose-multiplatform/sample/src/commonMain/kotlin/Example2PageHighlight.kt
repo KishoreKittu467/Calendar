@@ -1,5 +1,5 @@
-import ContinuousSelectionHelper.isInDateBetweenSelection
-import ContinuousSelectionHelper.isOutDateBetweenSelection
+import com.kizitonwose.calendar.compose.ContinuousSelectionHelper.isInDateBetweenSelection
+import com.kizitonwose.calendar.compose.ContinuousSelectionHelper.isOutDateBetweenSelection
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import com.kizitonwose.calendar.compose.DateSelection
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import kotlinx.datetime.LocalDate

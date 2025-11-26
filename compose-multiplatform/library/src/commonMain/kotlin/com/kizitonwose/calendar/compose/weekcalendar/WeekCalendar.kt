@@ -84,9 +84,9 @@ internal fun WeekCalendarImpl(
     }
 }
 
-private inline fun Modifier.onFirstDayPlaced(
+private fun Modifier.onFirstDayPlaced(
     column: Int,
-    noinline onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
+    onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
 ) = if (column == 0) {
     onPlaced(onFirstDayPlaced)
 } else {
