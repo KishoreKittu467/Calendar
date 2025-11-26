@@ -9,7 +9,7 @@ import com.kkapps.bubbles.features.book.data.database.FavoriteBookDao
 import com.kkapps.bubbles.features.book.data.mapper.toBook
 import com.kkapps.bubbles.features.book.data.mapper.toBookEntity
 import com.kkapps.bubbles.features.book.data.mappers.toBook
-import com.kkapps.bubbles.features.book.data.network.BookDataSource
+import com.kkapps.bubbles.features.book.data.sources.BookDataSource
 import com.kkapps.bubbles.features.book.domain.entities.Book
 import com.kkapps.bubbles.features.book.domain.repository.BookRepository
 import kotlinx.coroutines.flow.Flow
@@ -59,7 +59,7 @@ class BookRepositoryImpl(
         return try {
             favoriteBookDao.upsert(book.toBookEntity())
             DataResult.Success(Unit)
-        } catch(e: SQLiteException) {
+        } catch(_: SQLiteException) {
             DataResult.Error(DataError.Local.DISK_FULL)
         }
     }

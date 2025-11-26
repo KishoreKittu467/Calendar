@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalForeignApi::class)
-
 package com.kkapps.bubbles.features.book.data.database
 
 import androidx.room.Room
@@ -17,6 +15,7 @@ actual class DatabaseFactory {
         )
     }
 
+    @OptIn(ExperimentalForeignApi::class)
     private fun documentDirectory(): String {
         val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
             directory = NSDocumentDirectory,

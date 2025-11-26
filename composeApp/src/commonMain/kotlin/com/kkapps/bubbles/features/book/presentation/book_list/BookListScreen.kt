@@ -16,11 +16,10 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -56,7 +55,7 @@ fun BookListScreenRoot(
     BookListScreen(
         state = state,
         onAction = { action ->
-            when(action) {
+            when (action) {
                 is BookListAction.OnBookClick -> onBookClick(action.book)
                 else -> Unit
             }
@@ -121,18 +120,18 @@ fun BookListScreen(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                TabRow(
+                PrimaryTabRow(
                     selectedTabIndex = state.selectedTabIndex,
                     modifier = Modifier
                         .padding(vertical = 12.dp)
                         .widthIn(max = 700.dp)
                         .fillMaxWidth(),
                     containerColor = DesertWhite,
-                    indicator = { tabPositions ->
-                        TabRowDefaults.SecondaryIndicator(
+                    indicator = {
+                        SecondaryIndicator(
                             color = SandYellow,
                             modifier = Modifier
-                                .tabIndicatorOffset(tabPositions[state.selectedTabIndex])
+                                .tabIndicatorOffset(selectedTabIndex = state.selectedTabIndex)
                         )
                     }
                 ) {
@@ -179,9 +178,9 @@ fun BookListScreen(
                             .fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        when(pageIndex) {
+                        when (pageIndex) {
                             0 -> {
-                                if(state.isLoading) {
+                                if (state.isLoading) {
                                     CircularProgressIndicator()
                                 } else {
                                     when {
@@ -193,6 +192,7 @@ fun BookListScreen(
                                                 color = MaterialTheme.colorScheme.error
                                             )
                                         }
+
                                         state.searchResults.isEmpty() -> {
                                             Text(
                                                 text = stringResource(Res.string.no_search_results),
@@ -201,6 +201,7 @@ fun BookListScreen(
                                                 color = MaterialTheme.colorScheme.error
                                             )
                                         }
+
                                         else -> {
                                             BookList(
                                                 books = state.searchResults,
@@ -214,8 +215,9 @@ fun BookListScreen(
                                     }
                                 }
                             }
+
                             1 -> {
-                                if(state.favoriteBooks.isEmpty()) {
+                                if (state.favoriteBooks.isEmpty()) {
                                     Text(
                                         text = stringResource(Res.string.no_favorite_books),
                                         textAlign = TextAlign.Center,

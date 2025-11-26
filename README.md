@@ -1,3 +1,5 @@
+🫧 Bubbles
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop, Server.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
@@ -23,7 +25,6 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
 If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
 
-
 Retrieve elements fast: Map<String, Any>
 No duplicates: Set<Any>
 Maintain order: List<Any>
@@ -33,29 +34,31 @@ Running the apps on different platforms:
 
 ## Bubbles App
 
-[X] Android : `AndroidApp`
-    [X] or run in terminal: `./gradlew :composeApp:installDebug && adb shell monkey -p com.kkapps.bubbles -c android.intent.category.LAUNCHER 1`
-[X] iOS: Select `iosApp`
-[X] Desktop: `./gradlew :composeApp:run`
-[X] Web: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
-[X] Server: `./gradlew :server:run`
+- [x] Android : `AndroidApp`
+    - [x] or run in terminal: `./gradlew :composeApp:installDebug && adb shell monkey -p com.kkapps.bubbles -c android.intent.category.LAUNCHER 1`
+- [x] iOS: Select `iosApp`
+- [x] Desktop: `./gradlew :composeApp:run`
+- [x] Web: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --info`
+    - [ ] `PREREQUISITE:` Keep `org.gradle.configuration-cache=false` in `gradle.properties`
+- [x] Server: `./gradlew :server:run`
+- 
 
 ## Demos
 
 **Calendar**
-[X] Android: `AndroidCalendarSample`
-    [X] or run in terminal: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug && adb shell monkey -p com.kizitonwose.calendar.compose.multiplatform.sample -c android.intent.category.LAUNCHER 1`
-[ ] iOS: Select `calendar`
-    [ ] `BUG:` Not installing
-[X] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
-[X] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun --info` (Keep `org.gradle.configuration-cache=false` in `gradle.properties`)
-    [ ] `BUG:` Showing blank screen
+- [x] Android: `AndroidCalendarSample`
+    - [x] or run in terminal: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:installDebug && adb shell monkey -p com.kizitonwose.calendar.compose.multiplatform.sample -c android.intent.category.LAUNCHER 1`
+- [ ] iOS: Select `calendar`
+    - [ ] `BUG:` Not installing
+- [x] Desktop: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:run`
+- [x] Web: `./gradlew :deps:libs:calendar:compose-multiplatform:sample:wasmJsBrowserDevelopmentRun --info`
+    - [ ] `PREREQUISITE:` Keep `org.gradle.configuration-cache=false` in `gradle.properties`
 
 **RickTextEditor**
-[X] Android: `AndroidRichTextEditorSample`
-    [X] or run in terminal: `./gradlew :deps:libs:rich_text_editor:sample:android:installDebug && adb shell monkey -p com.mohamedrejeb.richeditor -c android.intent.category.LAUNCHER 1`
-[ ] iOS: `richTextEditor`
-    [ ] `BUG:` Not installing
-[X] Desktop: `./gradlew :deps:libs:rich_text_editor:sample:desktop:run`
-[X] Web: `./gradlew :deps:libs:rich_text_editor:sample:web:wasmJsBrowserDevelopmentRun --info`
-    [ ] `BUG:` Not covering entire screen, Viewport kept on expanding as window size changes
+- [x] Android: `AndroidRichTextEditorSample`
+    - [x] or run in terminal: `./gradlew :deps:libs:rich_text_editor:sample:android:installDebug && adb shell monkey -p com.mohamedrejeb.richeditor -c android.intent.category.LAUNCHER 1`
+- [ ] iOS: `richTextEditor`
+    - [ ] `BUG:` Not installing
+- [x] Desktop: `./gradlew :deps:libs:rich_text_editor:sample:desktop:run`
+- [x] Web: `./gradlew :deps:libs:rich_text_editor:sample:web:wasmJsBrowserDevelopmentRun --info`
+    - [ ] `BUG:` Not covering entire screen, Viewport kept on expanding as window size changes

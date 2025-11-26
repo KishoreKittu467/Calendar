@@ -17,10 +17,7 @@ kotlin {
         browser {
             commonWebpackConfig {
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(project.projectDir.path)
-                    }
+                    static(project.projectDir.path)
                 }
             }
         }
@@ -48,6 +45,7 @@ kotlin {
             api(compose.uiUtil)
             api(compose.components.resources)
             api(compose.components.uiToolingPreview)
+            api(libs.jetbrains.material.icons)
         }
     }
 }

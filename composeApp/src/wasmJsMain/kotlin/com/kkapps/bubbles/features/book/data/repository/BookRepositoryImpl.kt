@@ -8,7 +8,7 @@ import com.kkapps.bubbles.features.book.data.database.FavoriteBookDataSource
 import com.kkapps.bubbles.features.book.data.mapper.toBook
 import com.kkapps.bubbles.features.book.data.mapper.toBookEntity
 import com.kkapps.bubbles.features.book.data.mappers.toBook
-import com.kkapps.bubbles.features.book.data.network.BookDataSource
+import com.kkapps.bubbles.features.book.data.sources.BookDataSource
 import com.kkapps.bubbles.features.book.domain.entities.Book
 import com.kkapps.bubbles.features.book.domain.repository.BookRepository
 import kotlinx.coroutines.flow.Flow

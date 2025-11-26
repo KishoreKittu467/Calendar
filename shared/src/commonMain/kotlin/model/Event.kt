@@ -34,7 +34,7 @@ interface IEvent: IEntity {
     val contributors: LinkedHashSet<String>?
     val attachments: LinkedHashSet<IBookMark>?
     val location: BookmarkType.Location?
-    var isMarked: Boolean
+    var isMarked: Boolean?
     var lastModifiedAt: Long?
 }
 
@@ -52,10 +52,10 @@ data class Event(
     override val reminders: Set<IReminder>? = null,
     override val tags: LinkedHashSet<String>? = null,
     override val categories: LinkedHashSet<String>? = null,
-    override val contributors: LinkedHashSet<String>? = null,
+    override val contributors : LinkedHashSet<String>? = null,
     override val attachments: LinkedHashSet<IBookMark>? = null,
     override val location: BookmarkType.Location? = null,
-    override var isMarked: Boolean = false,
+    override var isMarked: Boolean? = null,
     override var lastModifiedAt: Long? = createdAt,
     private val iEntity: IEntity
 ) : IEvent, IEntity by iEntity

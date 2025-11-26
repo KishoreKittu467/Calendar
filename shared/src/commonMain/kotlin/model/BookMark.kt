@@ -36,7 +36,7 @@ sealed class BookmarkType(val details: IEntity) : IFieldType {
         val locationDetails: IEntity,
         val lat: Double,
         val long: Double,
-        val link: Link
+        val link: Link?
     ) : BookmarkType(locationDetails)
 
     data class Subscription(

@@ -1,10 +1,19 @@
 package com.kkapps.common.ui.components.icons
 
+import androidx.compose.foundation.Image
+import androidx.compose.material.icons.materialIcon
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathBuilder
+import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 val StarIcon: ImageVector
     get() = ImageVector.Builder(
@@ -176,3 +185,162 @@ val SearchIcon: ImageVector
             }.nodes
         )
     }.build()
+
+val AddIcon: ImageVector
+    get() = ImageVector.Builder(
+        name = "Add", defaultWidth = 24.dp, defaultHeight = 24.dp, viewportWidth = 24f, viewportHeight = 24f
+    ).apply {
+        addPath(
+            fill = Brush.linearGradient(
+                colors = listOf(Color.Green, Color.DarkGray),
+            ),
+            pathData = PathBuilder().apply {
+                moveTo(19f, 13f)
+                horizontalLineTo(13f)
+                verticalLineTo(19f)
+                horizontalLineTo(11f)
+                verticalLineTo(13f)
+                horizontalLineTo(5f)
+                verticalLineTo(11f)
+                horizontalLineTo(11f)
+                verticalLineTo(5f)
+                horizontalLineTo(13f)
+                verticalLineTo(11f)
+                horizontalLineTo(19f)
+                verticalLineTo(13f)
+                close()
+            }.nodes
+        )
+    }.build()
+
+val EditIcon: ImageVector
+    get() = ImageVector.Builder(
+        name = "Edit", defaultWidth = 24.dp, defaultHeight = 24.dp, viewportWidth = 24f, viewportHeight = 24f
+    ).apply {
+        addPath(
+            fill = Brush.linearGradient(
+                colors = listOf(Color.Green, Color.DarkGray),
+            ),
+            pathData = PathBuilder().apply {
+                moveTo(3f, 17.25f)
+                verticalLineTo(21f)
+                horizontalLineTo(6.75f)
+                lineTo(17.81f, 9.94f)
+                lineTo(14.06f, 6.19f)
+                lineTo(3f, 17.25f)
+                close()
+                moveTo(20.71f, 7.04f)
+                curveTo(21.1f, 6.65f, 21.1f, 6.02f, 20.71f, 5.63f)
+                lineTo(18.37f, 3.29f)
+                curveTo(17.98f, 2.9f, 17.35f, 2.9f, 16.96f, 3.29f)
+                lineTo(15.13f, 5.12f)
+                lineTo(18.88f, 8.87f)
+                lineTo(20.71f, 7.04f)
+                close()
+            }.nodes
+        )
+    }.build()
+
+
+val AirplaneTakeoff: ImageVector
+    get() {
+        if (_airplaneTakeoff != null) {
+            return _airplaneTakeoff!!
+        }
+        _airplaneTakeoff = materialIcon(name = "Plane") {
+            path(
+                fill = SolidColor(Color(0xFFDCDCDC)),
+                fillAlpha = 1.0F,
+                strokeAlpha = 1.0F,
+                strokeLineWidth = 0.0F,
+                strokeLineCap = StrokeCap.Butt,
+                strokeLineJoin = StrokeJoin.Miter,
+                strokeLineMiter = 4.0F,
+                pathFillType = PathFillType.NonZero,
+            ) {
+                moveTo(2.5F, 19.0F)
+                horizontalLineTo(21.5F)
+                verticalLineTo(21.0F)
+                horizontalLineTo(2.5F)
+                verticalLineTo(19.0F)
+                moveTo(22.07F, 9.64F)
+                curveTo(21.86F, 8.84F, 21.03F, 8.36F, 20.23F, 8.58F)
+                lineTo(14.92F, 10.0F)
+                lineTo(8.0F, 3.57F)
+                lineTo(6.09F, 4.08F)
+                lineTo(10.23F, 11.25F)
+                lineTo(5.26F, 12.58F)
+                lineTo(3.29F, 11.04F)
+                lineTo(1.84F, 11.43F)
+                lineTo(3.66F, 14.59F)
+                lineTo(4.43F, 15.92F)
+                lineTo(6.03F, 15.5F)
+                lineTo(11.34F, 14.07F)
+                lineTo(15.69F, 12.91F)
+                lineTo(21.0F, 11.5F)
+                curveTo(21.81F, 11.26F, 22.28F, 10.44F, 22.07F, 9.64F)
+                close()
+            }
+        }
+        return _airplaneTakeoff!!
+    }
+
+private var _airplaneTakeoff: ImageVector? = null
+
+@Preview
+@Composable
+@Suppress("UnusedPrivateMember")
+private fun IconAirplaneTakeoffPreview() {
+    Image(imageVector = AirplaneTakeoff, contentDescription = null)
+}
+
+val AirplaneLanding: ImageVector
+    get() {
+        if (_airplaneLanding != null) {
+            return _airplaneLanding!!
+        }
+        _airplaneLanding = materialIcon(name = "AirplaneLanding") {
+            path(
+                fill = SolidColor(Color(0xFFDCDCDC)),
+                fillAlpha = 1.0F,
+                strokeAlpha = 1.0F,
+                strokeLineWidth = 0.0F,
+                strokeLineCap = StrokeCap.Butt,
+                strokeLineJoin = StrokeJoin.Miter,
+                strokeLineMiter = 4.0F,
+                pathFillType = PathFillType.NonZero,
+            ) {
+                moveTo(2.5F, 19.0F)
+                horizontalLineTo(21.5F)
+                verticalLineTo(21.0F)
+                horizontalLineTo(2.5F)
+                verticalLineTo(19.0F)
+                moveTo(9.68F, 13.27F)
+                lineTo(14.03F, 14.43F)
+                lineTo(19.34F, 15.85F)
+                curveTo(20.14F, 16.06F, 20.96F, 15.59F, 21.18F, 14.79F)
+                curveTo(21.39F, 14.0F, 20.92F, 13.17F, 20.12F, 12.95F)
+                lineTo(14.81F, 11.53F)
+                lineTo(12.05F, 2.5F)
+                lineTo(10.12F, 2.0F)
+                verticalLineTo(10.28F)
+                lineTo(5.15F, 8.95F)
+                lineTo(4.22F, 6.63F)
+                lineTo(2.77F, 6.24F)
+                verticalLineTo(11.41F)
+                lineTo(4.37F, 11.84F)
+                lineTo(9.68F, 13.27F)
+                close()
+            }
+        }
+        return _airplaneLanding!!
+    }
+
+private var _airplaneLanding: ImageVector? = null
+
+@Preview
+@Composable
+@Suppress("UnusedPrivateMember")
+private fun IconAirplaneLandingPreview() {
+    Image(imageVector = AirplaneLanding, contentDescription = null)
+}

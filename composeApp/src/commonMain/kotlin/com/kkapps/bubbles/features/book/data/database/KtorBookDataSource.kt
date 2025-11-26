@@ -5,7 +5,7 @@ import com.kkapps.bubbles.core.domain.DataError
 import com.kkapps.bubbles.core.domain.DataResult
 import com.kkapps.bubbles.features.book.data.dto.BookWorkDto
 import com.kkapps.bubbles.features.book.data.dto.SearchResponseDto
-import com.kkapps.bubbles.features.book.data.network.BookDataSource
+import com.kkapps.bubbles.features.book.data.sources.BookDataSource
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter

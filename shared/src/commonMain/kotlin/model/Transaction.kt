@@ -33,6 +33,12 @@ sealed interface TxType: IFieldType {
     data object Took: TxType
     data object Debt: TxType
     data object Credit: TxType
+
+    companion object {
+        val allTxTypes: List<TxType> = listOf(
+            Paid, Took, Debt, Credit
+        )
+    }
 }
 
 sealed interface TxStatus: IFieldType {

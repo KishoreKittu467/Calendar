@@ -1,9 +1,8 @@
 package com.kkapps.bubbles.features.book.presentation
 
 import Greeting
-import Platform
 import androidx.lifecycle.ViewModel
-import com.kkapps.bubbles.features.book.domain.repository.BubblesRepository
+import com.kkapps.bubbles.app.domain.repository.BubblesRepository
 
 class BubblesViewModel(
     private val bubblesRepository: BubblesRepository,

@@ -1,9 +1,9 @@
-package com.kkapps.bubbles.features.book.data.repository
+package com.kkapps.bubbles.app.data.repository
 
+import com.kkapps.bubbles.app.domain.repository.BubblesRepository
 import com.kkapps.bubbles.features.book.domain.entities.Bubble
-import com.kkapps.bubbles.features.book.domain.repository.BubblesRepository
 
-class BubblesRepositoryImpl: BubblesRepository {
+class BubblesRepositoryImpl : BubblesRepository {
     override fun getBubbles(): List<Bubble> {
         return listOf(
             Bubble(
@@ -24,4 +24,5 @@ class BubblesRepositoryImpl: BubblesRepository {
             )
         )
     }
+
 }

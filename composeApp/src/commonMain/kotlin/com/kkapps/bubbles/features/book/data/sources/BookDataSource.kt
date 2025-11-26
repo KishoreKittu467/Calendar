@@ -1,4 +1,4 @@
-package com.kkapps.bubbles.features.book.data.network
+package com.kkapps.bubbles.features.book.data.sources
 
 import com.kkapps.bubbles.core.domain.DataError
 import com.kkapps.bubbles.core.domain.DataResult

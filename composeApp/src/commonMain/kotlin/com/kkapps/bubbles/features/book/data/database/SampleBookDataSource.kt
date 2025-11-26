@@ -5,9 +5,9 @@ import com.kkapps.bubbles.core.domain.DataResult
 import com.kkapps.bubbles.features.book.data.dto.BookWorkDto
 import com.kkapps.bubbles.features.book.data.dto.SearchResponseDto
 import com.kkapps.bubbles.features.book.data.dto.SearchedBookDto
-import com.kkapps.bubbles.features.book.data.network.BookDataSource
+import com.kkapps.bubbles.features.book.data.sources.BookDataSource
 
-class LocalBookDataSource : BookDataSource {
+class SampleBookDataSource : BookDataSource {
 
     override suspend fun searchBooks(
         query: String,

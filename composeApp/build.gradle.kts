@@ -18,15 +18,16 @@ plugins {
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        outputModuleName = "composeApp"
+        outputModuleName = "BubblesApp"
         browser {
             commonWebpackConfig {
-                outputFileName = "composeApp.js"
+                outputFileName = "BubblesApp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(project.projectDir.path)
-                    }
+//                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside browser
+//                        add(project.projectDir.path)
+//                    }
+                    static(project.projectDir.path)
                 }
             }
         }
@@ -45,8 +46,12 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "BubblesApp"
             isStatic = true
+
+            freeCompilerArgs += listOf(
+                "-Xbinary=bundleId=com.kkapps.bubbles"
+            )
         }
     }
 
@@ -103,6 +108,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.jetbrains.compose.navigation)
+            implementation(libs.jetbrains.material.icons)
             implementation(libs.kotlinx.serialization.json)
             api(libs.koin.core)
 
