@@ -22,14 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kizitonwose.calendar.compose.HorizontalCalendar
-import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
-import com.kizitonwose.calendar.compose.SimpleCalendarTitle
-import com.kizitonwose.calendar.compose.clickable
-import com.kizitonwose.calendar.compose.displayText
-import com.kizitonwose.calendar.compose.next
-import com.kizitonwose.calendar.compose.previous
 import com.kizitonwose.calendar.compose.rememberCalendarState
-import com.kizitonwose.calendar.compose.rememberFirstMostVisibleMonth
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.daysOfWeek

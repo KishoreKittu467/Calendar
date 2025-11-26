@@ -33,8 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kizitonwose.calendar.compose.CalendarLayoutInfo
 import com.kizitonwose.calendar.compose.HeatMapCalendar
-import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
-import com.kizitonwose.calendar.compose.displayText
 import com.kizitonwose.calendar.compose.heatmapcalendar.HeatMapCalendarState
 import com.kizitonwose.calendar.compose.heatmapcalendar.HeatMapWeek
 import com.kizitonwose.calendar.compose.heatmapcalendar.rememberHeatMapCalendarState

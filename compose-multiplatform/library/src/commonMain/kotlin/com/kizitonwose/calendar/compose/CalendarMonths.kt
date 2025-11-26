@@ -150,10 +150,10 @@ internal class ItemCoordinatesStore(
     }
 }
 
-private fun Modifier.onFirstDayPlaced(
+private inline fun Modifier.onFirstDayPlaced(
     dateRow: Int,
     dateColumn: Int,
-    onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
+    noinline onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
 ) = if (dateRow == 0 && dateColumn == 0) {
     onPlaced(onFirstDayPlaced)
 } else {
@@ -166,4 +166,4 @@ private val defaultMonthContainer: (@Composable LazyItemScope.(CalendarMonth, co
 private val defaultMonthBody: (@Composable ColumnScope.(CalendarMonth, content: @Composable () -> Unit) -> Unit) =
     { _, content -> content() }
 
-internal fun <T> T?.or(default: T) = this ?: default
+internal inline fun <T> T?.or(default: T) = this ?: default

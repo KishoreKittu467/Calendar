@@ -1,7 +1,5 @@
 @file:Suppress("NewApi")
 
-package com.kizitonwose.calendar.compose
-
 import androidx.compose.ui.text.intl.Locale
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Month
