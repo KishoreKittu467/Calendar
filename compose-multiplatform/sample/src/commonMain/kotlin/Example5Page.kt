@@ -21,11 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kizitonwose.calendar.compose.NavigationIcon
 import com.kizitonwose.calendar.compose.WeekCalendar
-import com.kizitonwose.calendar.compose.displayText
-import com.kizitonwose.calendar.compose.getWeekPageTitle
-import com.kizitonwose.calendar.compose.rememberFirstVisibleWeekAfterScroll
 import com.kizitonwose.calendar.compose.weekcalendar.rememberWeekCalendarState
 import com.kizitonwose.calendar.core.minusDays
 import com.kizitonwose.calendar.core.now

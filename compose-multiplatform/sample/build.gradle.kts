@@ -1,3 +1,6 @@
+
+//import com.kizitonwose.calendar.buildsrc.Android
+//import com.kizitonwose.calendar.buildsrc.Config
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
@@ -18,7 +21,10 @@ kotlin {
             commonWebpackConfig {
                 outputFileName = "CalendarSampleWasm.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static(project.projectDir.path)
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
                 }
             }
         }
@@ -31,7 +37,10 @@ kotlin {
             commonWebpackConfig {
                 outputFileName = "CalendarSampleJs.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static(project.projectDir.path)
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
                 }
             }
             useCommonJs()
@@ -126,14 +135,14 @@ android {
     java {
         toolchain {
             languageVersion.set(
-                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt()),
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
             )
         }
     }
     kotlin {
         jvmToolchain {
             languageVersion.set(
-                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt()),
+                JavaLanguageVersion.of(JavaVersion.VERSION_21.majorVersion.toInt())
             )
         }
     }

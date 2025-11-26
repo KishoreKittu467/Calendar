@@ -253,27 +253,27 @@ internal class YearItemCoordinatesStore(
     }
 }
 
-private fun Modifier.onFirstDayPlaced(
+private inline fun Modifier.onFirstDayPlaced(
     monthIndex: Int,
     dateRow: Int,
     dateColumn: Int,
-    onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
+    noinline onFirstDayPlaced: (coordinates: LayoutCoordinates) -> Unit,
 ) = if (monthIndex == 0 && dateRow == 0 && dateColumn == 0) {
     onPlaced(onFirstDayPlaced)
 } else {
     this
 }
 
-private fun Modifier.onFirstMonthPlaced(
+private inline fun Modifier.onFirstMonthPlaced(
     monthIndex: Int,
-    onFirstMonthPlaced: (coordinates: LayoutCoordinates) -> Unit,
+    noinline onFirstMonthPlaced: (coordinates: LayoutCoordinates) -> Unit,
 ) = if (monthIndex == 0) {
     onPlaced(onFirstMonthPlaced)
 } else {
     this
 }
 
-internal fun ((month: CalendarMonth) -> Boolean)?.apply(months: List<CalendarMonth>) = if (this != null) {
+internal inline fun ((month: CalendarMonth) -> Boolean)?.apply(months: List<CalendarMonth>) = if (this != null) {
     months.filter(this).also {
         check(it.isNotEmpty()) {
             "Cannot remove all the months in a year, " +

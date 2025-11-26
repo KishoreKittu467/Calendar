@@ -25,11 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
 import com.kizitonwose.calendar.compose.VerticalYearCalendar
-import com.kizitonwose.calendar.compose.clickable
-import com.kizitonwose.calendar.compose.displayText
-import com.kizitonwose.calendar.compose.plus
 import com.kizitonwose.calendar.compose.yearcalendar.YearContentHeightMode
 import com.kizitonwose.calendar.compose.yearcalendar.rememberYearCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
@@ -67,7 +63,8 @@ fun Example11Page(adjacentYears: Int = 50) {
             modifier = Modifier
                 .fillMaxSize()
                 .testTag("Calendar"),
-            contentPadding = LocalScaffoldPaddingValues.current.plus(PaddingValues(horizontal = if (isTablet) 52.dp else 10.dp)),
+            contentPadding = LocalScaffoldPaddingValues.current +
+                PaddingValues(horizontal = if (isTablet) 52.dp else 10.dp),
             state = state,
             dayContent = { day ->
                 Day(

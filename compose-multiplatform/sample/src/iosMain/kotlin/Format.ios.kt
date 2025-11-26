@@ -1,5 +1,3 @@
-package com.kizitonwose.calendar.compose
-
 import androidx.compose.ui.text.intl.Locale
 import com.kizitonwose.calendar.core.daysOfWeek
 import kotlinx.datetime.DayOfWeek
