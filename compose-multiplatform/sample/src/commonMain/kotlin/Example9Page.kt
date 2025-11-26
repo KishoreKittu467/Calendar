@@ -45,8 +45,16 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.kizitonwose.calendar.compose.CalendarState
 import com.kizitonwose.calendar.compose.HorizontalCalendar
+import com.kizitonwose.calendar.compose.LocalScaffoldPaddingValues
+import com.kizitonwose.calendar.compose.SimpleCalendarTitle
 import com.kizitonwose.calendar.compose.WeekCalendar
+import com.kizitonwose.calendar.compose.clickable
+import com.kizitonwose.calendar.compose.displayText
+import com.kizitonwose.calendar.compose.next
+import com.kizitonwose.calendar.compose.previous
 import com.kizitonwose.calendar.compose.rememberCalendarState
+import com.kizitonwose.calendar.compose.rememberFirstVisibleMonthAfterScroll
+import com.kizitonwose.calendar.compose.rememberFirstVisibleWeekAfterScroll
 import com.kizitonwose.calendar.compose.weekcalendar.WeekCalendarState
 import com.kizitonwose.calendar.compose.weekcalendar.rememberWeekCalendarState
 import com.kizitonwose.calendar.core.DayPosition
