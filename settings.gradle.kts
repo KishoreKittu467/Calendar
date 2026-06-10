@@ -49,10 +49,21 @@ val richTextEditor = DynamicModule(
 )
 val calendar = DynamicModule(":deps:libs:calendar:compose-multiplatform:library")
 
-// App module
+// App modules
 val composeApp = DynamicModule(
     name = ":composeApp",
-    dependencies = setOf(shared, server, ui, calendar, richTextEditor)
+    dependencies = setOf(
+        shared,
+        server,
+        ui,
+        calendar,
+        richTextEditor
+    )
+)
+
+val androidApp = DynamicModule(
+    name = ":androidApp",
+    dependencies = setOf(composeApp)
 )
 
 // Demos and samples
@@ -74,6 +85,7 @@ val richTextEditorSample = DynamicModule(
 
 val enabledRootModules = setOf(
     composeApp,
+    androidApp,
     richTextEditorSample,
     calendarSample
 )

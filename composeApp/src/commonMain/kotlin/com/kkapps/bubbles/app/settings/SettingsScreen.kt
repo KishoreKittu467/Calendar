@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -38,14 +41,16 @@ fun SettingsScreen(
     onUserNameChange: (String) -> Unit,
     profileEmoji: String,
     onProfileEmojiChange: (String) -> Unit,
+    isDeveloperModeEnabled: Boolean = false,
+    onDatabaseEditorClick: () -> Unit = {},
     onBack: () -> Unit
 ) {
     var localUserName by remember { mutableStateOf(userName) }
     var localEmoji by remember { mutableStateOf(profileEmoji) }
     var newCategory by remember { mutableStateOf("") }
     var newTag by remember { mutableStateOf("") }
-    val categories = remember { mutableStateListOf<String>("Work", "Home") }
-    val tags = remember { mutableStateListOf<String>("Urgent", "Idea") }
+    val categories = remember { mutableStateListOf("Work", "Home") }
+    val tags = remember { mutableStateListOf("Urgent", "Idea") }
 
     Scaffold(
         topBar = {
@@ -66,6 +71,7 @@ fun SettingsScreen(
                 .padding(16.dp)
         ) {
             Column(
+                Modifier.verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text("Theme")
@@ -137,6 +143,17 @@ fun SettingsScreen(
 
                 Spacer(Modifier.height(8.dp))
                 Text("Changes are saved locally.", textAlign = TextAlign.Start)
+
+                if (isDeveloperModeEnabled) {
+                    Spacer(Modifier.height(16.dp))
+                    HorizontalDivider()
+                    Spacer(Modifier.height(16.dp))
+
+                    Text("Developer Options", style = androidx.compose.material3.MaterialTheme.typography.titleMedium)
+                    Button(onClick = onDatabaseEditorClick) {
+                        Text("Database Editor")
+                    }
+                }
             }
         }
     }

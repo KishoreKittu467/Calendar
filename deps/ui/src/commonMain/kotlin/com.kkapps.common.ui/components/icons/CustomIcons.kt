@@ -1,8 +1,6 @@
 package com.kkapps.common.ui.components.icons
 
-import androidx.compose.foundation.Image
 import androidx.compose.material.icons.materialIcon
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -13,7 +11,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathBuilder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 val StarIcon: ImageVector
     get() = ImageVector.Builder(
@@ -241,7 +238,6 @@ val EditIcon: ImageVector
         )
     }.build()
 
-
 val AirplaneTakeoff: ImageVector
     get() {
         if (_airplaneTakeoff != null) {
@@ -287,13 +283,6 @@ val AirplaneTakeoff: ImageVector
 
 private var _airplaneTakeoff: ImageVector? = null
 
-@Preview
-@Composable
-@Suppress("UnusedPrivateMember")
-private fun IconAirplaneTakeoffPreview() {
-    Image(imageVector = AirplaneTakeoff, contentDescription = null)
-}
-
 val AirplaneLanding: ImageVector
     get() {
         if (_airplaneLanding != null) {
@@ -337,10 +326,3 @@ val AirplaneLanding: ImageVector
     }
 
 private var _airplaneLanding: ImageVector? = null
-
-@Preview
-@Composable
-@Suppress("UnusedPrivateMember")
-private fun IconAirplaneLandingPreview() {
-    Image(imageVector = AirplaneLanding, contentDescription = null)
-}

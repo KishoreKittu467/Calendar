@@ -28,6 +28,7 @@ import com.kkapps.bubbles.app.add.MoodEditorScreen
 import com.kkapps.bubbles.app.add.NoteEditorScreen
 import com.kkapps.bubbles.app.auth.LoginScreen
 import com.kkapps.bubbles.app.home.HomeScreenRoot
+import com.kkapps.bubbles.app.settings.DatabaseEditorScreen
 import com.kkapps.bubbles.app.settings.SettingsScreen
 import com.kkapps.bubbles.app.splash.SplashScreen
 import com.kkapps.bubbles.core.presentation.extensions.sharedKoinViewModel
@@ -43,11 +44,9 @@ import com.kkapps.bubbles.features.budget.BudgetListScreen
 import com.kkapps.bubbles.features.budget.EntryMode
 import com.kkapps.bubbles.features.entries.presentation.diary.DiaryEditorScreen
 import kotlinx.coroutines.delay
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-@Preview
 fun App() {
     MaterialTheme {
         val navController = rememberNavController()
@@ -59,6 +58,9 @@ fun App() {
         var themeMode by rememberSaveable { mutableStateOf(ThemeMode.System) }
         var userName by rememberSaveable { mutableStateOf("User") }
         var profileEmoji by rememberSaveable { mutableStateOf("🙂") }
+
+        // Developer mode toggle - set to true to enable developer features
+        val isDeveloperModeEnabled = true
 
         NavHost(
             navController = navController,
@@ -162,6 +164,21 @@ fun App() {
                     onUserNameChange = { userName = it },
                     profileEmoji = profileEmoji,
                     onProfileEmojiChange = { profileEmoji = it },
+                    isDeveloperModeEnabled = isDeveloperModeEnabled,
+                    onDatabaseEditorClick = { navController.navigate(Route.DatabaseEditor) },
+                    onBack = { navController.navigateUp() }
+                )
+            }
+
+            composable<Route.DatabaseEditor>(
+                enterTransition = {
+                    fadeIn(animationSpec = tween(250)) + scaleIn(initialScale = 0.95f)
+                },
+                exitTransition = {
+                    fadeOut(animationSpec = tween(200)) + scaleOut(targetScale = 1.05f)
+                }
+            ) {
+                DatabaseEditorScreen(
                     onBack = { navController.navigateUp() }
                 )
             }

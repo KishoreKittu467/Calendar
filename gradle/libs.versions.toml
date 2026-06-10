@@ -1,43 +1,41 @@
 [versions]
-agp = "8.13.1"
+agp = "9.0.1"
 
 # Do not remove these versions even if they are not used directly
 android-minSdk = "24"
 android-compileSdk = "36"
 android-targetSdk = "36"
 
-androidx-activityCompose = "1.12.0"
+androidx-activityCompose = "1.12.4"
 androidx-appcompat = "1.7.1"
 androidx-core-ktx = "1.17.0"
 materialIcons = "1.7.3"
 
-composeMultiplatform = "1.9.3"
-kotlin = "2.2.21"
+composeMultiplatform = "1.10.1"
+cmpNavigation = "1.0.0-alpha06"
+kotlin = "2.3.10"
 koin = "4.1.1"
-ktor = "3.3.2"
+ktor = "3.4.0"
 ksoup = "0.6.0"
 jetbrainsMarkdown = "0.7.3"
 
-logback = "1.5.21"
+logback = "1.5.32"
 google-services = "4.4.4"
 kotlinx-coroutines = "1.10.2"
 androidx-lifecycle = "2.9.6"
 coil3 = "3.3.0"
-androidxNavigation = "2.9.1"
-kotlinSerialization = "1.9.0"
-kotlinter = "5.3.0"
+androidxNavigation = "2.9.2"
+kotlinSerialization = "1.10.0"
+kotlinter = "5.4.2"
 dateTime = "0.7.1"
 
 bvc = "0.18.1"
+composeBom = "2026.02.00"
 version = "0.53.0"
-mavenPublish = "0.35.0"
+mavenPublish = "0.36.0"
 nexusPublish = "2.0.0"
 
 ksp = "2.3.2"
-# ios build is not working with versions sqlite = "2.5.0-alpha11" & room = "2.7.0-alpha11"
-# web build only working with versions sqlite = "2.5.0-alpha11" & room = "2.7.0-alpha11"
-#sqlite = "2.5.0-rc01"
-#room = "2.7.0-rc01"
 sqlite = "2.6.2"
 room = "2.8.4"
 
@@ -74,6 +72,9 @@ androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", nam
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 jetbrains-compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref= "androidxNavigation"}
 jetbrains-material-icons = { module = "org.jetbrains.compose.material:material-icons-core", version.ref = "materialIcons" }
+
+jetbrains-navigation3-ui = {module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "cmpNavigation"}
+jetbrains-lifecycle-viewmodel-nav3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "cmpNavigation"}
 
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinSerialization" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
@@ -135,7 +136,7 @@ koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 #kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 #desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.5" }
 
-# Other Non compose libraries
+# Other Non kmp libraries
 nexus-publish = { module = "io.github.gradle-nexus.publish-plugin:io.github.gradle-nexus.publish-plugin.gradle.plugin", version.ref = "nexusPublish" }
 #androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.4.0" }
 #androidx-cardview = { module = "androidx.cardview:cardview", version = "1.0.0" }
@@ -149,11 +150,14 @@ nexus-publish = { module = "io.github.gradle-nexus.publish-plugin:io.github.grad
 #test-junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5" }
 #test-junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" }
 
-#compose-ui-ui = { module = "androidx.compose.ui:ui", version.ref = "composeAndroid" }
-#compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "composeAndroid" }
-#compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeAndroid" }
-#compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 #compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+#compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
 
 #compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeAndroid" }
 #compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "composeAndroid" }
@@ -189,6 +193,8 @@ ktor-client = [
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidKmpLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -203,6 +209,6 @@ room = { id = "androidx.room", version.ref = "room" }
 bcv = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "bvc" }
 versionCheck = { id = "com.github.ben-manes.versions", version.ref = "version" }
 
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 #dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

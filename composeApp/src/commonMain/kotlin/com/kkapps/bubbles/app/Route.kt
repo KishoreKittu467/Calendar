@@ -17,6 +17,9 @@ sealed interface Route {
     @Serializable
     data object Settings : Route
 
+    @Serializable
+    data object DatabaseEditor : Route
+
     // Add routes
     @Serializable
     data object AddEntry : Route

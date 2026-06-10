@@ -4,7 +4,7 @@ import com.kkapps.bubbles.core.domain.DataError
 import com.kkapps.bubbles.core.domain.DataResult
 import com.kkapps.bubbles.core.domain.EmptyResult
 import com.kkapps.bubbles.core.domain.map
-import com.kkapps.bubbles.features.book.data.database.FavoriteBookDataSource
+import com.kkapps.bubbles.features.book.data.database.FavoriteBookDao
 import com.kkapps.bubbles.features.book.data.mapper.toBook
 import com.kkapps.bubbles.features.book.data.mapper.toBookEntity
 import com.kkapps.bubbles.features.book.data.mappers.toBook
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.map
 
 class BookRepositoryImpl(
     private val bookDataSource: BookDataSource,
-    private val favoriteBookDataSource: FavoriteBookDataSource
+    private val dao: FavoriteBookDao
 ): BookRepository {
     override suspend fun searchBooks(query: String): DataResult<List<Book>, DataError.Remote> {
         return bookDataSource
@@ -27,7 +27,7 @@ class BookRepositoryImpl(
     }
 
     override suspend fun getBookDescription(bookId: String): DataResult<String?, DataError> {
-        val localResult = favoriteBookDataSource.getFavoriteBook(bookId)
+        val localResult = dao.getFavoriteBook(bookId)
 
         return if(localResult == null) {
             bookDataSource
@@ -46,7 +46,7 @@ class BookRepositoryImpl(
     }
 
     override fun getFavoriteBooks(): Flow<List<Book>> {
-        return favoriteBookDataSource
+        return dao
             .getFavoriteBooks()
             .map { bookEntities ->
                 bookEntities.map { it.toBook() }
@@ -54,7 +54,7 @@ class BookRepositoryImpl(
     }
 
     override fun isBookFavorite(id: String): Flow<Boolean> {
-        return favoriteBookDataSource
+        return dao
             .getFavoriteBooks()
             .map { bookEntities ->
                 bookEntities.any { it.id == id }
@@ -62,11 +62,11 @@ class BookRepositoryImpl(
     }
 
     override suspend fun markAsFavorite(book: Book): EmptyResult<DataError.Local> {
-        favoriteBookDataSource.upsert(book.toBookEntity())
+        dao.upsert(book.toBookEntity())
         return DataResult.Success(Unit)
     }
 
     override suspend fun deleteFromFavorites(id: String) {
-        favoriteBookDataSource.deleteFavoriteBook(id)
+        dao.deleteFavoriteBook(id)
     }
 }

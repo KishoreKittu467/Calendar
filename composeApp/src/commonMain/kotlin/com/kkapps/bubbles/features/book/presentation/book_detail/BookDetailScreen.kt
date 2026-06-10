@@ -213,37 +213,37 @@ private fun BookDetailScreen(
                         modifier = Modifier
                             .padding(vertical = 8.dp)
                     )
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.White)
-                    ) {
-                        val state = rememberCalendarState(
-                            startMonth = startMonth,
-                            endMonth = endMonth,
-                            firstVisibleMonth = currentMonth,
-                            firstDayOfWeek = daysOfWeek.first(),
-                        )
-
-                        HorizontalCalendar(
-                            modifier = Modifier.testTag("Calendar"),
-                            state = state,
-                            dayContent = { day ->
-                                Day(day, isSelected = selections.contains(day)) { clicked ->
-                                    if (selections.contains(clicked)) {
-                                        selections.remove(clicked)
-                                    } else {
-                                        selections.add(clicked)
-                                    }
-                                }
-                            },
-                            monthHeader = {
-                                MonthHeader(daysOfWeek = daysOfWeek)
-                            },
-                        )
-                    }
                 }
             }
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
+        ) {
+            val state = rememberCalendarState(
+                startMonth = startMonth,
+                endMonth = endMonth,
+                firstVisibleMonth = currentMonth,
+                firstDayOfWeek = daysOfWeek.first(),
+            )
+
+            HorizontalCalendar(
+                modifier = Modifier.testTag("Calendar"),
+                state = state,
+                dayContent = { day ->
+                    Day(day, isSelected = selections.contains(day)) { clicked ->
+                        if (selections.contains(clicked)) {
+                            selections.remove(clicked)
+                        } else {
+                            selections.add(clicked)
+                        }
+                    }
+                },
+                monthHeader = {
+                    MonthHeader(daysOfWeek = daysOfWeek)
+                },
+            )
         }
     }
 }
